@@ -88,15 +88,37 @@ const ASSETS = {
 };
 
 const NAVIGATION = [
-  { label: "Cues", url: ROUTES.cues, groups: [{ title: "Shop cues", links: [["All cues", ROUTES.cues], ["Pool cues", ROUTES.cues], ["Break cues", "pages/collection-break-cues.html"], ["Jump cues", "pages/collection-jump-cues.html"]] }, { title: "Featured", links: [["First carbon cue", "pages/collection-first-carbon-cue.html"], ["Break power", "pages/collection-break-power.html"], ["Difficult shots", "pages/collection-difficult-shots.html"]] }] },
-  { label: "Butts", url: ROUTES.butts, groups: [{ title: "Cue butts", links: [["All butts", ROUTES.butts], ["Playing butts", "pages/collection-shop-cue-butts.html"], ["Break butts", "pages/collection-break-power.html"], ["Single butts", ROUTES.butts]] }] },
-  { label: "Shafts", url: ROUTES.shafts, groups: [{ title: "Carbon shafts", links: [["All shafts", ROUTES.shafts], ["Pool shafts", ROUTES.shafts], ["Break shafts", "pages/collection-break-power.html"]] }, { title: "Shop by fit", links: [["Upgrade my shaft", "pages/collection-upgrade-my-shaft.html"], ["11.8–12.5 mm", ROUTES.shafts], ["12.8 mm", ROUTES.shafts]] }] },
-  { label: "Cases", url: ROUTES.cases, groups: [{ title: "Cue cases", links: [["All cases", ROUTES.cases], ["Soft cases", ROUTES.cases], ["Hard cases", ROUTES.cases], ["Travel cases", ROUTES.cases]] }] },
-  { label: "Gloves", url: ROUTES.gloves, groups: [{ title: "Pool gloves", links: [["All gloves", ROUTES.gloves], ["Left hand", ROUTES.gloves], ["Right hand", ROUTES.gloves]] }] },
-  { label: "Accessories", url: ROUTES.accessories, groups: [{ title: "Accessories", links: [["Shop all", ROUTES.accessories], ["Chalk", ROUTES.accessories], ["Joint protectors", ROUTES.accessories], ["Cue maintenance", ROUTES.accessories]] }] },
-  { label: "Services", url: ROUTES.services, groups: [{ title: "Player support", links: [["Cue finder", "pages/collection-difficult-shots.html"], ["Shaft compatibility", "pages/services.html#compatibility"], ["Warranty", "pages/services.html#warranty"], ["Contact us", "pages/services.html#contact"]] }] },
-  { label: "Blog", url: ROUTES.resources, groups: [{ title: "Learn", links: [["Latest articles", ROUTES.resources], ["Buying guides", ROUTES.resources], ["Cue care", "pages/blog-cue-care-checklist.html"], ["Player stories", ROUTES.resources]] }] }
+  { label: "Cues", url: ROUTES.cues, eyebrow: "Build your game", description: "Find a complete cue by shot, playing style or experience level.", groups: [{ title: "Shop by cue", links: [["All pool cues", ROUTES.cues, "Complete playing cues"], ["Break cues", "pages/collection-break-cues.html", "Power with control"], ["Jump cues", "pages/collection-jump-cues.html", "Clear difficult obstacles"]] }, { title: "Start by goal", links: [["My first carbon cue", "pages/collection-first-carbon-cue.html", "A ready-to-play starting point"], ["More break power", "pages/collection-break-power.html", "Purpose-built opening shots"], ["Make difficult shots", "pages/collection-difficult-shots.html", "Control for demanding positions"]] }], assist: ["Not sure where to start?", "Use the player-first cue finder", "pages/collection-difficult-shots.html"], feature: { badge: "Player-ready setup", title: "Your first carbon cue, simplified", copy: "A balanced cue and essential gear selected to remove the guesswork.", cta: "Explore the setup", url: "pages/collection-first-carbon-cue.html", image: "assets/images/products/prod-first-carbon-cue-collection-1x1-01.webp" } },
+  { label: "Butts", url: ROUTES.butts, eyebrow: "Create your combination", description: "Choose the look, balance and purpose of the back half of your cue.", groups: [{ title: "Shop cue butts", links: [["All butts", ROUTES.butts, "See every available style"], ["Playing butts", "pages/collection-shop-cue-butts.html", "Balanced for everyday control"], ["Break butts", "pages/collection-break-power.html", "A firmer power platform"]] }, { title: "Build with confidence", links: [["Single butts", ROUTES.butts, "Start a custom pairing"], ["Match a carbon shaft", ROUTES.shafts, "Complete your setup"], ["Joint compatibility", "pages/blog-understanding-joint-types.html", "Check fit before you buy"]] }], assist: ["Building a mixed setup?", "Check joint compatibility first", "pages/blog-understanding-joint-types.html"], feature: { badge: "Mix + match", title: "Build a cue around your stroke", copy: "Pair a distinctive butt with the carbon shaft profile that feels right.", cta: "Shop cue butts", url: "pages/collection-shop-cue-butts.html", image: "assets/images/products/prod-shop-cue-butts-collection-1x1-01.webp" } },
+  { label: "Shafts", url: ROUTES.shafts, eyebrow: "Upgrade the response", description: "Compare diameter, purpose and fit before changing your whole cue.", groups: [{ title: "Carbon shafts", links: [["All shafts", ROUTES.shafts, "Compare the complete range"], ["Pool shafts", ROUTES.shafts, "Control and low deflection"], ["Break shafts", "pages/collection-break-power.html", "Stiffness for energy transfer"]] }, { title: "Shop by fit", links: [["Upgrade my shaft", "pages/collection-upgrade-my-shaft.html", "Keep your current butt"], ["11.8–12.5 mm", ROUTES.shafts, "Slim to familiar profiles"], ["12.8 mm", ROUTES.shafts, "A fuller, solid feel"]] }], assist: ["Diameter, taper or joint?", "Read the shaft selection guide", "pages/blog-how-to-choose-the-right-shaft.html"], feature: { badge: "Most useful upgrade", title: "Change the feel. Keep your cue.", copy: "A focused carbon upgrade for cleaner feedback and more predictable cue-ball control.", cta: "Find your shaft", url: "pages/collection-upgrade-my-shaft.html", image: "assets/images/products/prod-upgrade-my-shaft-collection-1x1-01.webp" } },
+  { label: "Cases", url: ROUTES.cases, eyebrow: "Protect the setup", description: "Carry cues and accessories with the right balance of access and protection.", groups: [{ title: "Shop cases", links: [["All cue cases", ROUTES.cases, "Compare every format"], ["Soft cases", ROUTES.cases, "Lightweight daily carry"], ["Hard cases", ROUTES.cases, "Structured protection"]] }, { title: "Choose by use", links: [["League night", ROUTES.cases, "Fast access and simple storage"], ["Tournament travel", `${ROUTES.cases}#products`, "Protection for longer days"], ["Complete setups", "pages/collection-first-carbon-cue.html", "Cue, glove and case together"]] }], assist: ["How much should you carry?", "Start with your regular playing routine", `${ROUTES.cases}#products`], feature: { badge: "Travel-ready", title: "Arrive with every piece protected", copy: "Organize your playing cue, break cue and essentials without unnecessary bulk.", cta: "Explore cue cases", url: ROUTES.cases, image: "assets/images/catalog/thumb-accessories-catalog-1x1-01.webp" } },
+  { label: "Gloves", url: ROUTES.gloves, eyebrow: "A smoother bridge", description: "Choose hand, size and color for consistent cue delivery in every condition.", groups: [{ title: "Shop gloves", links: [["All pool gloves", ROUTES.gloves, "Singles and player packs"], ["Left hand", `${ROUTES.gloves}#products`, "Fits the bridge hand"], ["Right hand", `${ROUTES.gloves}#products`, "A mirrored performance fit"]] }, { title: "Find your fit", links: [["Size guide", `${ROUTES.gloves}#size-guide`, "Measure before you order"], ["Glove packs", `${ROUTES.gloves}#packs`, "Stay prepared for every session"], ["Complete the setup", `${ROUTES.gloves}#complete-setup`, "Pair with player essentials"]] }], assist: ["Left or right glove?", "Choose the glove worn on your bridge hand", `${ROUTES.gloves}#hand-guide`], feature: { badge: "Pure pool glove", title: "Consistent glide, less distraction", copy: "Breathable performance fabric with a secure fit across long practice and match sessions.", cta: "Find your glove", url: ROUTES.gloves, image: "assets/images/products/gloves/prod-pure-pool-glove-left-grey-1x1-01.webp" } },
+  { label: "Accessories", url: ROUTES.accessories, eyebrow: "Keep every detail ready", description: "Small essentials that protect consistency before, during and after play.", groups: [{ title: "Shop accessories", links: [["Shop all", ROUTES.accessories, "Browse every essential"], ["Chalk", ROUTES.accessories, "Reliable tip contact"], ["Joint protectors", ROUTES.accessories, "Protect threads in transit"]] }, { title: "Care + prepare", links: [["Cue maintenance", `${ROUTES.accessories}#products`, "Keep surfaces match-ready"], ["Cases", ROUTES.cases, "Organize and protect"], ["Cue care checklist", "pages/blog-cue-care-checklist.html", "A simple maintenance routine"]] }], assist: ["Building a useful kit?", "Start with protection, chalk and care", `${ROUTES.accessories}#products`], feature: { badge: "Match-day essentials", title: "The small gear that saves a session", copy: "Keep your cue clean, protected and ready when the next match begins.", cta: "Shop accessories", url: ROUTES.accessories, image: "assets/images/catalog/thumb-accessories-catalog-1x1-01.webp" } },
+  { label: "Services", url: ROUTES.services, eyebrow: "Player support", description: "Get the right fit before purchase and dependable help after it.", groups: [{ title: "Choose with confidence", links: [["Cue finder", "pages/collection-difficult-shots.html", "Start from how you play"], ["Shaft compatibility", "pages/services.html#compatibility", "Confirm joint and fit"], ["Our story", "pages/services.html#our-story", "How CUEBOTS is built for players"]] }, { title: "After your order", links: [["Warranty", "pages/services.html#warranty", "Understand your coverage"], ["Easy exchange", "pages/services.html#warranty", "Get the fit corrected"], ["Contact us", "pages/services.html#contact", "Talk to player support"]] }], assist: ["Need a human recommendation?", "Player support can help narrow the choice", "pages/services.html#contact"], feature: { badge: "Limited lifetime warranty", title: "Support that stays with your setup", copy: "Compatibility guidance, straightforward exchanges and product help when you need it.", cta: "Visit player support", url: ROUTES.services, image: "assets/images/recommendations/poster-difficult-shots-recommendation-4x5-01.webp" } },
+  { label: "Blog", url: ROUTES.resources, eyebrow: "Play with more context", description: "Practical guidance for choosing, maintaining and understanding your equipment.", groups: [{ title: "Explore", links: [["Latest articles", ROUTES.resources, "New ideas from CUEBOTS"], ["Buying guides", ROUTES.resources, "Compare before you purchase"], ["Player stories", ROUTES.resources, "Real setups and experience"]] }, { title: "Popular guides", links: [["Choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html", "Diameter, taper, joint and feel"], ["Carbon vs wood", "pages/blog-carbon-vs-wood-shaft.html", "Compare two playing experiences"], ["Cue care checklist", "pages/blog-cue-care-checklist.html", "Keep equipment ready"]] }], assist: ["One decision, clearly explained", "Start with the shaft buying guide", "pages/blog-how-to-choose-the-right-shaft.html"], feature: { badge: "Editor's guide", title: "How to choose the right shaft", copy: "Build a shortlist around your stroke instead of choosing from specifications alone.", cta: "Read the guide", url: "pages/blog-how-to-choose-the-right-shaft.html", image: "assets/images/guides/thumb-how-to-choose-right-shaft-buying-guide-3x2-01.webp" } }
 ];
+
+const MEGA_VISUALS = {
+  Cues: [["assets/images/collections/thumb-pool-cues-related-5x3-01.webp", "assets/images/collections/thumb-break-cues-related-5x3-01.webp", "assets/images/collections/thumb-jump-cues-related-5x3-01.webp"], ["assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp", "assets/images/collections/thumb-break-power-related-5x3-01.webp", "assets/images/collections/thumb-difficult-shots-related-5x3-01.webp"]],
+  Butts: [["assets/images/collections/thumb-cue-butts-related-5x3-01.webp", "assets/images/collections/thumb-shop-cue-butts-related-5x3-01.webp", "assets/images/collections/thumb-break-power-related-5x3-01.webp"], ["assets/images/catalog/thumb-cue-butts-catalog-1x1-01.webp", "assets/images/collections/thumb-carbon-shafts-related-5x3-01.webp", "assets/images/guides/thumb-understanding-cue-joint-types-buying-guide-3x2-01.webp"]],
+  Shafts: [["assets/images/collections/thumb-carbon-shafts-related-5x3-01.webp", "assets/images/products/prod-upgrade-my-shaft-collection-1x1-01.webp", "assets/images/collections/thumb-break-power-related-5x3-01.webp"], ["assets/images/collections/thumb-upgrade-my-shaft-related-5x3-01.webp", "assets/images/products/prod-carbon-shaft-starter-bundle-1x1-01.webp", "assets/images/catalog/thumb-carbon-shafts-catalog-1x1-01.webp"]],
+  Cases: [["assets/images/collections/thumb-cases-related-5x3-01.webp", "assets/images/collections/hero-cases-collection-desktop-01.webp", "assets/images/products/prod-carbon-shaft-starter-bundle-1x1-01.webp"], ["assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp", "assets/images/collections/thumb-cases-related-5x3-01.webp", "assets/images/promotions/poster-retro-ii-complete-setups-desktop-01.webp"]],
+  Gloves: [["assets/images/collections/thumb-pure-pool-glove-related-5x3-01.webp", "assets/images/products/gloves/prod-pure-pool-glove-left-grey-1x1-01.webp", "assets/images/products/gloves/prod-pure-pool-glove-right-black-1x1-01.webp"], ["assets/images/promotions/poster-pure-pool-glove-single-navigation-desktop-01.webp", "assets/images/products/gloves/prod-pure-pool-glove-pack-3-mixed-1x1-01.webp", "assets/images/promotions/poster-pure-pool-glove-complete-setup-desktop-01.webp"]],
+  Accessories: [["assets/images/collections/thumb-accessories-related-5x3-01.webp", "assets/images/catalog/thumb-accessories-catalog-1x1-01.webp", "assets/images/products/prod-carbon-shaft-starter-bundle-1x1-01.webp"], ["assets/images/guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp", "assets/images/collections/thumb-cases-related-5x3-01.webp", "assets/images/products/prod-first-carbon-cue-collection-1x1-01.webp"]],
+  Services: [["assets/images/collections/thumb-difficult-shots-related-5x3-01.webp", "assets/images/guides/thumb-understanding-cue-joint-types-buying-guide-3x2-01.webp", "assets/images/services/des-factory-direct-carbon-service-5x4-01.webp"], ["assets/images/recommendations/poster-difficult-shots-recommendation-4x5-01.webp", "assets/images/catalog/thumb-accessories-catalog-1x1-01.webp", "assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp"]],
+  Blog: [["assets/images/guides/thumb-how-to-choose-right-shaft-buying-guide-3x2-01.webp", "assets/images/guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp", "assets/images/guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"], ["assets/images/guides/thumb-how-to-choose-right-shaft-buying-guide-3x2-01.webp", "assets/images/guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp", "assets/images/guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"]]
+};
+
+const MEGA_PROMOTIONS = {
+  Cues: [["Complete setup", "First carbon cue kit", "pages/collection-first-carbon-cue.html", "assets/images/recommendations/poster-first-carbon-cue-recommendation-4x5-01.webp"], ["Player solution", "Control difficult shots", "pages/collection-difficult-shots.html", "assets/images/recommendations/poster-difficult-shots-recommendation-4x5-01.webp"]],
+  Butts: [["Build your cue", "Mix butt + shaft", "pages/collection-shop-cue-butts.html", "assets/images/recommendations/poster-shop-cue-butts-recommendation-4x5-01.webp"], ["Fit guide", "Check your joint", "pages/blog-understanding-joint-types.html", "assets/images/promotions/poster-understanding-cue-joint-types-store-4x5-01.webp"]],
+  Shafts: [["Upgrade path", "Keep the butt you love", "pages/collection-upgrade-my-shaft.html", "assets/images/recommendations/poster-upgrade-my-shaft-recommendation-4x5-01.webp"], ["Editor's guide", "Choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html", "assets/images/promotions/poster-how-to-choose-right-shaft-store-4x5-01.webp"]],
+  Cases: [["Travel ready", "Protect the complete setup", ROUTES.cases, "assets/images/collections/hero-cases-collection-desktop-01.webp"], ["Recommended setup", "Pack for league night", "pages/collection-first-carbon-cue.html", "assets/images/promotions/poster-retro-ii-complete-setups-desktop-01.webp"]],
+  Gloves: [["Pure glove", "Smooth, repeatable delivery", ROUTES.gloves, "assets/images/promotions/poster-pure-pool-glove-single-navigation-desktop-01.webp"], ["Multi-buy", "Build your glove rotation", `${ROUTES.gloves}#packs`, "assets/images/promotions/poster-pure-pool-glove-multibuy-desktop-01.webp"]],
+  Accessories: [["Player essentials", "Complete the match-day kit", ROUTES.accessories, "assets/images/collections/hero-accessories-collection-desktop-01.webp"], ["Quick guide", "Cue care checklist", "pages/blog-cue-care-checklist.html", "assets/images/guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"]],
+  Services: [["Free guidance", "Find the right setup", "pages/services.html#contact", "assets/images/recommendations/poster-difficult-shots-recommendation-4x5-01.webp"], ["Player promise", "Warranty + easy exchange", "pages/services.html#warranty", "assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp"]],
+  Blog: [["Start here", "How to choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html", "assets/images/promotions/poster-how-to-choose-right-shaft-store-4x5-01.webp"], ["Popular read", "Carbon shaft vs wood shaft", "pages/blog-carbon-vs-wood-shaft.html", "assets/images/guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp"]]
+};
 
 const pageData = {
   trust: [
@@ -204,7 +226,7 @@ const CURRENCY = {
   USD: { rate: 1, locale: "en-US", currency: "USD" },
   VND: { rate: 26150, locale: "vi-VN", currency: "VND" },
   CNY: { rate: 7.18, locale: "zh-CN", currency: "CNY" },
-  EUR: { rate: .86, locale: "de-DE", currency: "EUR" },
+  EUR: { rate: .86, locale: "fr-FR", currency: "EUR" },
   KRW: { rate: 1390, locale: "ko-KR", currency: "KRW" },
   JPY: { rate: 156, locale: "ja-JP", currency: "JPY" }
 };
@@ -230,8 +252,10 @@ function readTextStorage(key, fallback) {
 }
 
 function readCurrency() {
-  const value = readTextStorage("cuebotsCurrency", "USD");
-  return CURRENCY[value] ? value : "USD";
+  try {
+    const value = sessionStorage.getItem("cuebotsCurrency") || "USD";
+    return CURRENCY[value] ? value : "USD";
+  } catch (error) { return "USD"; }
 }
 
 function readStorage(key, fallback) {
@@ -247,7 +271,7 @@ function readStorage(key, fallback) {
 
 function saveState() {
   try {
-    localStorage.setItem("cuebotsCurrency", state.currency);
+    sessionStorage.setItem("cuebotsCurrency", state.currency);
     localStorage.setItem("cuebotsHomeCart", JSON.stringify(state.cart));
     localStorage.setItem("cuebotsHomeWishlist", JSON.stringify(state.wishlist));
   } catch (error) { /* The page remains usable when storage is unavailable. */ }
@@ -286,13 +310,94 @@ function allProducts() {
 function findProduct(id) { return allProducts().find(item => item.id === id); }
 
 function renderNavigation() {
-  const desktopMarkup = NAVIGATION.map(item => {
-    const dropdown = item.groups?.length ? `<div class="nav-dropdown" style="--dropdown-columns:${item.groups.length}" aria-label="${item.label} submenu">${item.groups.map(group => `<section class="dropdown-group"><h3>${group.title}</h3>${group.links.map(([label, url]) => `<a href="${url}">${label}</a>`).join("")}</section>`).join("")}</div>` : "";
-    return `<div class="nav-item${dropdown ? " has-dropdown" : ""}"><a class="nav-link" href="${item.url}"${item.current ? ' aria-current="page"' : ""}>${item.label}</a>${dropdown}</div>`;
+  const desktopMarkup = `<div class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Home</a></div>` + NAVIGATION.map(item => {
+    const menuId = `mega-${item.label.toLowerCase()}`;
+    const tabs = item.groups.map((group, index) => `<button class="mega-menu-tab${index === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${index === 0}" aria-controls="${menuId}-panel-${index}" data-mega-panel-index="${index}"><span>${group.title}</span><span aria-hidden="true">→</span></button>`).join("");
+    const panels = item.groups.map((group, groupIndex) => {
+      const images = MEGA_VISUALS[item.label][groupIndex];
+      const promo = MEGA_PROMOTIONS[item.label][groupIndex];
+      const cards = group.links.map(([label, url], linkIndex) => `<a class="mega-visual-card" href="${url}"><span class="mega-visual-media"><img src="${images[linkIndex]}" width="500" height="300" alt="" loading="lazy" decoding="async"></span><span class="mega-visual-label">${label}<span aria-hidden="true">→</span></span></a>`).join("");
+      return `<section class="mega-menu-panel${groupIndex === 0 ? " active" : ""}" id="${menuId}-panel-${groupIndex}" role="tabpanel" data-mega-panel="${groupIndex}"${groupIndex === 0 ? "" : " hidden"}><div class="mega-panel-title"><span>${group.title}</span><a href="${item.url}">VIEW ALL <span aria-hidden="true">→</span></a></div><div class="mega-visual-grid">${cards}<a class="mega-promo-card" href="${promo[2]}"><img src="${promo[3]}" width="500" height="600" alt="" loading="lazy" decoding="async"><span><small>${promo[0]}</small><strong>${promo[1]}</strong><b>EXPLORE <span aria-hidden="true">→</span></b></span></a></div></section>`;
+    }).join("");
+    const dropdown = `<div class="nav-dropdown mega-menu" id="${menuId}" aria-label="${item.label} mega menu"><div class="mega-menu-shell"><aside class="mega-menu-sidebar"><small>EXPLORE ${item.label.toUpperCase()}</small><div class="mega-menu-tabs" role="tablist" aria-label="${item.label} navigation groups">${tabs}</div><a class="mega-menu-view-all" href="${item.url}">VIEW ALL ${item.label.toUpperCase()} <span aria-hidden="true">→</span></a></aside><div class="mega-menu-content">${panels}</div></div></div>`;
+    return `<div class="nav-item has-dropdown"><a class="nav-link" href="${item.url}" aria-haspopup="true" aria-expanded="false" aria-controls="mega-${item.label.toLowerCase()}" data-mega-trigger${item.current ? ' aria-current="page"' : ""}>${item.label}</a>${dropdown}</div>`;
   }).join("");
-  const mobileMarkup = NAVIGATION.map(item => `<a class="nav-link" href="${item.url}"${item.current ? ' aria-current="page"' : ""}>${item.label}</a>`).join("");
+  const mobileMarkup = `<a class="mobile-nav-card" href="index.html" aria-current="page"><img src="assets/images/heroes/hero-carbon-pool-shaft-desktop-01.webp" width="500" height="300" alt="" loading="lazy"><span><strong>Home</strong><small>RETURN →</small></span></a>` + NAVIGATION.map(item => `<a class="mobile-nav-card" href="${item.url}"${item.current ? ' aria-current="page"' : ""}><img src="${MEGA_VISUALS[item.label][0][0]}" width="500" height="300" alt="" loading="lazy"><span><strong>${item.label}</strong><small>EXPLORE →</small></span></a>`).join("");
   $("[data-desktop-nav]").innerHTML = desktopMarkup;
   $("[data-mobile-nav]").innerHTML = mobileMarkup;
+}
+
+function wireMegaMenus() {
+  const items = $$(".desktop-nav .nav-item.has-dropdown");
+  const closeItem = item => {
+    item.classList.remove("is-mega-open");
+    $("[data-mega-trigger]", item)?.setAttribute("aria-expanded", "false");
+  };
+  const openItem = item => {
+    if (!matchMedia("(min-width: 1181px)").matches) return;
+    items.forEach(other => { if (other !== item) closeItem(other); });
+    item.classList.add("is-mega-open");
+    $("[data-mega-trigger]", item)?.setAttribute("aria-expanded", "true");
+  };
+  items.forEach(item => {
+    const trigger = $("[data-mega-trigger]", item);
+    const menu = $(".mega-menu", item);
+    const tabs = $$("[data-mega-panel-index]", item);
+    const panels = $$("[data-mega-panel]", item);
+    const selectPanel = index => {
+      tabs.forEach((tab, tabIndex) => {
+        const selected = tabIndex === index;
+        tab.classList.toggle("active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+      });
+      panels.forEach((panel, panelIndex) => {
+        const selected = panelIndex === index;
+        panel.classList.toggle("active", selected);
+        panel.hidden = !selected;
+      });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("mouseenter", () => selectPanel(index));
+      tab.addEventListener("focus", () => selectPanel(index));
+      tab.addEventListener("click", () => selectPanel(index));
+      tab.addEventListener("keydown", event => {
+        if (!["ArrowUp", "ArrowDown", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        let next = index;
+        if (event.key === "ArrowDown") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowUp") next = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        tabs[next].focus();
+      });
+    });
+    item.addEventListener("mouseenter", () => openItem(item));
+    item.addEventListener("mouseleave", () => closeItem(item));
+    item.addEventListener("focusin", () => openItem(item));
+    item.addEventListener("focusout", () => requestAnimationFrame(() => {
+      if (!item.contains(document.activeElement)) closeItem(item);
+    }));
+    trigger.addEventListener("keydown", event => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        openItem(item);
+        $("a", menu)?.focus();
+      }
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeItem(item);
+      }
+    });
+    menu.addEventListener("keydown", event => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      closeItem(item);
+      trigger.focus();
+    });
+  });
+  document.addEventListener("pointerdown", event => {
+    if (!event.target.closest(".desktop-nav")) items.forEach(closeItem);
+  });
 }
 
 function renderStaticSections() {
@@ -514,17 +619,46 @@ function wireSwipe(element, onLeft, onRight, onInteract) {
   element.addEventListener("pointercancel", () => { tracking = false; });
 }
 
+const FREE_SHIPPING_THRESHOLD = 99;
+
+function cartSku(id) {
+  return `CB-${String(id || "ITEM").replace(/[^a-z0-9]+/gi, "-").toUpperCase()}`;
+}
+
+function cartVariant(item, product = {}) {
+  if (item.variant) return item.variant;
+  const name = `${item.name || product.name || ""}`;
+  const glove = name.match(/Glove[^—]*—\s*(Left|Right) Hand\s*\/\s*([A-Za-z]+)/i);
+  if (glove) return `Pure ${glove[2]} / ${glove[1]} Hand / Size M`;
+  if (/shaft/i.test(name)) return "Carbon shaft / Standard joint selection";
+  if (/break/i.test(name)) return "Break setup / Performance configuration";
+  if (/cue|set|bundle/i.test(name)) return "CUEBOTS standard configuration";
+  return "Standard product configuration";
+}
+
 function renderCart() {
   const body = $("[data-cart-items]");
   if (!state.cart.length) {
     body.innerHTML = `<div class="empty-state"><svg class="icon" aria-hidden="true"><use href="#i-cart"></use></svg><p>Your cart is empty.</p><a class="btn" href="${ROUTES.cues}">SHOP CUES</a></div>`;
   } else {
-    body.innerHTML = state.cart.map(item => `<div class="cart-item"><img src="${item.image}" width="72" height="72" alt=""><div><strong>${item.name}</strong><span>${money(item.price)} × ${item.qty}</span></div><button type="button" aria-label="Remove ${item.name} from cart" data-remove-cart="${item.id}"><svg class="icon"><use href="#i-trash"></use></svg></button></div>`).join("");
+    const toolbar = state.cart.length >= 2 ? '<div class="cart-list-toolbar"><button class="cart-remove-all" type="button" data-remove-all-cart>Remove all selected</button></div>' : "";
+    body.innerHTML = toolbar + state.cart.map(item => {
+      const product = findProduct(item.id) || {};
+      const name = item.name || product.name || product.title || "CUEBOTS product";
+      const price = Number(item.price ?? product.price) || 0;
+      const image = item.image || product.image || ASSETS.accessories;
+      const sku = item.sku || cartSku(item.id);
+      return `<article class="cart-item"><img src="${image}" width="72" height="72" alt=""><div class="cart-item-main"><strong>${name}</strong><span class="cart-item-option">${cartVariant(item, product)}</span><span class="cart-item-option">SKU: ${sku}</span><span class="cart-item-price">${money(price * item.qty)}</span><div class="cart-item-controls"><div class="cart-quantity" aria-label="Quantity for ${name}"><button type="button" data-cart-qty="-1" data-cart-id="${item.id}" aria-label="Decrease ${name} quantity">−</button><output aria-label="Quantity">${item.qty}</output><button type="button" data-cart-qty="1" data-cart-id="${item.id}" aria-label="Increase ${name} quantity">+</button></div><button class="cart-remove-item" type="button" aria-label="Remove ${name} from cart" data-remove-cart="${item.id}"><svg class="icon"><use href="#i-trash"></use></svg></button></div></div></article>`;
+    }).join("");
   }
   const count = state.cart.reduce((total, item) => total + item.qty, 0);
-  const subtotal = state.cart.reduce((total, item) => total + item.price * item.qty, 0);
+  const subtotal = state.cart.reduce((total, item) => total + (Number(item.price ?? findProduct(item.id)?.price) || 0) * item.qty, 0);
   $("[data-cart-count]").textContent = count;
   $("[data-cart-subtotal]").textContent = money(subtotal);
+  const shipping = $("[data-shipping-reminder]");
+  const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+  shipping.textContent = count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping.";
+  shipping.classList.toggle("unlocked", count > 0 && remaining === 0);
   $("[data-checkout]").disabled = count === 0;
 }
 
@@ -533,7 +667,7 @@ function addToCart(id, closeQuick = false) {
   if (!product) return;
   const existing = state.cart.find(item => item.id === id);
   if (existing) existing.qty += 1;
-  else state.cart.push({ id, name: product.name || product.title, price: product.price, image: product.image, qty: 1 });
+  else state.cart.push({ id, name: product.name || product.title, price: product.price, image: product.image, qty: 1, sku: cartSku(id), variant: cartVariant({}, product) });
   saveState();
   renderCart();
   if (closeQuick) closeSurface($("#quickModal"));
@@ -715,10 +849,45 @@ function normalizeSearch(value) {
     .trim();
 }
 
+function additionalSearchEntries() {
+  const gloveColors = ["black", "blue", "grey", "olive", "red"];
+  const gloveSingles = gloveColors.flatMap(color => ["left", "right"].map(hand => {
+    const colorLabel = color[0].toUpperCase() + color.slice(1);
+    const handLabel = hand[0].toUpperCase() + hand.slice(1);
+    const name = `Pure Pool Glove — ${handLabel} Hand / ${colorLabel}`;
+    const image = `assets/images/products/gloves/prod-pure-pool-glove-${hand}-${color}-1x1-01.webp`;
+    return {
+      name,
+      price: 12,
+      image,
+      type: "Pool glove",
+      description: `${colorLabel} low-friction billiard glove for the ${hand} bridge hand`,
+      keywords: `glove gloves pool billiard bridge hand ${hand} ${color} pure performance accessory`,
+      url: sharedProductDetailUrl(`pure-glove-${hand}-${color}`, name, 12, 15, image)
+    };
+  }));
+  const glovePacks = [
+    ["pure-glove-pack-3-black", "Pure Glove 3-Pack — Black", 30, 36, "prod-pure-pool-glove-pack-3-black-1x1-01.webp"],
+    ["pure-glove-pack-3-grey", "Pure Glove 3-Pack — Grey", 30, 36, "prod-pure-pool-glove-pack-3-grey-1x1-01.webp"],
+    ["pure-glove-pack-3-olive", "Pure Glove 3-Pack — Olive", 30, 36, "prod-pure-pool-glove-pack-3-olive-1x1-01.webp"],
+    ["pure-glove-pack-3-mixed", "Pure Glove 3-Pack — Mixed", 32, 39, "prod-pure-pool-glove-pack-3-mixed-1x1-01.webp"],
+    ["pure-glove-pack-5-mixed", "Pure Glove 5-Pack — Full Color", 48, 60, "prod-pure-pool-glove-pack-5-mixed-1x1-01.webp"]
+  ].map(([id, name, price, oldPrice, file]) => {
+    const image = `assets/images/products/gloves/${file}`;
+    return { name, price, image, type: "Glove bundle", description: "Multi-buy pool glove pack", keywords: "glove gloves billiard pool pack bundle multibuy colors accessory", url: sharedProductDetailUrl(id, name, price, oldPrice, image) };
+  });
+  return [
+    { name: "Pool Gloves", price: null, image: "assets/images/collections/thumb-pure-pool-glove-related-5x3-01.webp", type: "Category", description: "Single gloves, colors, hand fit and multi-packs", keywords: "glove gloves pool billiard bridge hand left right size pure performance", url: "pages/collection-gloves.html" },
+    { name: "Cue Cases", price: null, image: "assets/images/collections/thumb-cases-related-5x3-01.webp", type: "Category", description: "Protection for cues, shafts and travel", keywords: "case cases cue storage bag travel protection hard soft", url: "pages/collection-cases.html" },
+    ...gloveSingles,
+    ...glovePacks
+  ];
+}
+
 function searchRelevance(item, query) {
   const term = normalizeSearch(query);
   const name = normalizeSearch(item.name);
-  const context = normalizeSearch(`${item.type} ${item.description || ""}`);
+  const context = normalizeSearch(`${item.type} ${item.description || ""} ${item.keywords || ""}`);
   if (!term) return 0;
   let score = 0;
   if (name === term) score += 1200;
@@ -739,17 +908,40 @@ function searchRelevance(item, query) {
 function renderSearch(query = "") {
   const results = $("[data-search-results]");
   const term = normalizeSearch(query);
-  if (!term) { results.innerHTML = ""; return; }
+  if (!term) {
+    let recentlyViewed = [];
+    try { recentlyViewed = JSON.parse(localStorage.getItem("cuebotsRecentlyViewed") || "[]"); } catch (error) { recentlyViewed = []; }
+    const activityIds = [...recentlyViewed, ...state.cart.map(item => item.id), ...Object.keys(state.wishlist).filter(id => state.wishlist[id])];
+    const recommendations = [...activityIds.map(findProduct).filter(Boolean), ...allProducts()].filter((item, index, items) => items.findIndex(candidate => candidate.id === item.id) === index).slice(0, 4);
+    results.innerHTML = `<div class="search-discovery"><a class="search-promo" href="pages/collection-first-carbon-cue.html"><img src="assets/images/collections/hero-first-carbon-cue-collection-desktop-01.webp" width="1200" height="420" alt="" loading="lazy" decoding="async"><span><small>PLAYER-READY BUNDLE</small><strong>Start with a complete carbon setup</strong><b>SHOP THE SETUP →</b></span></a><section class="search-suggestions"><div class="search-suggestions-head"><h3>${activityIds.length ? "BASED ON YOUR ACTIVITY" : "YOU MAY ALSO LIKE"}</h3><a href="pages/collection-pool-cues.html">VIEW ALL →</a></div><div class="search-suggestion-row">${recommendations.map(item => `<a href="${item.url}" class="search-suggestion-card"><img src="${item.image}" width="120" height="120" alt="" loading="lazy" decoding="async"><span><strong>${item.name || item.title}</strong><small>${money(item.price)}</small></span></a>`).join("")}</div></section></div>`;
+    return;
+  }
   const entries = [
-    ...pageData.categories.map(item => ({ name: item.name, price: null, url: item.url, image: item.image, type: "Category", description: `Browse the ${item.name} collection` })),
-    ...allProducts().map(item => ({ name: item.name || item.title, price: item.price, url: item.url || "pages/collection-first-carbon-cue.html", image: item.image, type: "Product", description: item.description || "CUEBOTS performance equipment" }))
-  ].map(item => ({ ...item, score: searchRelevance(item, term) }))
+    ...pageData.categories.map(item => ({ name: item.name, price: null, url: item.url, image: item.image, type: "Category", description: `Browse the ${item.name} collection`, keywords: `${item.name} shop collection equipment` })),
+    ...pageData.intents.map(item => ({ name: item.title, price: null, url: item.url, image: item.image, type: "Shopping guide", description: item.description, keywords: `${item.title} recommendation setup finder` })),
+    ...allProducts().map(item => ({ name: item.name || item.title, price: item.price, url: item.url || "pages/collection-first-carbon-cue.html", image: item.image, type: "Product", description: item.description || "CUEBOTS performance equipment", keywords: `${item.id || ""} cue shaft butt break jump case glove accessory bundle setup` })),
+    ...additionalSearchEntries()
+  ].filter((item, index, items) => items.findIndex(candidate => candidate.name === item.name && candidate.url === item.url) === index)
+    .map(item => ({ ...item, score: searchRelevance(item, term) }))
     .filter(item => item.score > 0)
     .sort((a, b) => b.score - a.score || a.name.length - b.name.length || a.name.localeCompare(b.name))
     .slice(0, 8);
   results.innerHTML = entries.length
     ? `<p class="search-summary">${entries.length} best matches</p>${entries.map(item => `<a class="search-result" href="${item.url}"><span class="search-result-thumb"><img src="${item.image}" width="48" height="48" alt="" loading="lazy" decoding="async"></span><span class="search-result-copy"><strong>${item.name}</strong><small>${item.type}${item.description ? ` · ${item.description}` : ""}</small></span>${item.price ? `<span class="search-result-meta">${money(item.price)}</span>` : '<span class="search-result-meta">View</span>'}</a>`).join("")}`
     : '<p class="search-empty">No matching products or categories found.</p>';
+}
+
+function setAccountMode(mode = "signin") {
+  const signup = mode === "signup";
+  $("[data-account-title]").textContent = signup ? "Create your account" : "Account sign in";
+  $("[data-account-intro]").textContent = signup ? "Save equipment, track orders and receive more relevant recommendations." : "Enter your account details to continue.";
+  $("[data-account-submit]").textContent = signup ? "CREATE ACCOUNT" : "SIGN IN";
+  const password = $("#accountPassword");
+  password.autocomplete = signup ? "new-password" : "current-password";
+  const switcher = $(".account-mode-switch");
+  switcher.dataset.accountMode = signup ? "signin" : "signup";
+  switcher.textContent = signup ? "Already have an account? Sign in" : "New to CUEBOTS? Create an account";
+  $("[data-account-status]").textContent = "";
 }
 
 function updateCurrency(value) {
@@ -763,6 +955,7 @@ function updateCurrency(value) {
 
 function init() {
   renderNavigation();
+  wireMegaMenus();
   renderStaticSections();
   renderProducts();
   renderReviews();
@@ -790,7 +983,8 @@ document.addEventListener("click", event => {
   if (target.matches("[data-open-cart]")) openSurface($("#cartDrawer"), target);
   if (target.matches("[data-close-cart]")) closeSurface($("#cartDrawer"));
   if (target.matches("[data-close-quick]")) closeSurface($("#quickModal"));
-  if (target.matches("[data-open-account]")) openSurface($("#accountModal"), target);
+  if (target.matches("[data-account-mode]")) setAccountMode(target.dataset.accountMode);
+  if (target.matches("[data-open-account]")) { setAccountMode(target.dataset.accountMode || "signin"); openSurface($("#accountModal"), target); }
   if (target.matches("[data-close-account]")) closeSurface($("#accountModal"));
   if (target.matches("[data-benefit-video-index]")) openBenefitVideo(Number(target.dataset.benefitVideoIndex), target);
   if (target.matches("[data-close-benefit]")) closeSurface($("#benefitModal"));
@@ -813,9 +1007,21 @@ document.addEventListener("click", event => {
 
   if (target.matches("[data-wishlist]")) toggleWishlist(target.dataset.wishlist, target);
   if (target.matches("[data-add-cart]")) addToCart(target.dataset.addCart, target.hasAttribute("data-close-after-add"));
+  if (target.matches("[data-cart-qty]")) {
+    const item = state.cart.find(entry => entry.id === target.dataset.cartId);
+    if (item) {
+      item.qty += Number(target.dataset.cartQty);
+      if (item.qty <= 0) state.cart = state.cart.filter(entry => entry !== item);
+      saveState(); renderCart();
+    }
+  }
   if (target.matches("[data-remove-cart]")) {
     state.cart = state.cart.filter(item => item.id !== target.dataset.removeCart);
     saveState(); renderCart(); showToast("Item removed from your cart.");
+  }
+  if (target.matches("[data-remove-all-cart]")) {
+    state.cart = [];
+    saveState(); renderCart(); showToast("Selected items removed from your cart.");
   }
   if (target.matches("[data-quick-product]")) openQuick(target.dataset.quickProduct, target);
   if (target.matches("[data-checkout]")) window.location.href = "pages/checkout.html";

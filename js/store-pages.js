@@ -14,7 +14,7 @@
     USD: { rate: 1, locale: "en-US", currency: "USD" },
     VND: { rate: 26150, locale: "vi-VN", currency: "VND" },
     CNY: { rate: 7.18, locale: "zh-CN", currency: "CNY" },
-    EUR: { rate: .86, locale: "de-DE", currency: "EUR" },
+    EUR: { rate: .86, locale: "fr-FR", currency: "EUR" },
     KRW: { rate: 1390, locale: "ko-KR", currency: "KRW" },
     JPY: { rate: 156, locale: "ja-JP", currency: "JPY" }
   };
@@ -131,14 +131,14 @@
   };
 
   const NAV = [
-    ["Cues", "pages/collection-pool-cues.html", [["Pool cues", "pages/collection-pool-cues.html"], ["Break cues", "pages/collection-break-cues.html"], ["Jump cues", "pages/collection-jump-cues.html"], ["First carbon cue", "pages/collection-first-carbon-cue.html"]]],
-    ["Butts", "pages/collection-cue-butts.html", [["All butts", "pages/collection-cue-butts.html"], ["Build your combination", "pages/collection-shop-cue-butts.html"]]],
-    ["Shafts", "pages/collection-carbon-shafts.html", [["All carbon shafts", "pages/collection-carbon-shafts.html"], ["Upgrade my shaft", "pages/collection-upgrade-my-shaft.html"]]],
-    ["Cases", "pages/collection-cases.html", [["All cue cases", "pages/collection-cases.html"], ["Travel protection", "pages/collection-cases.html#products"]]],
-    ["Gloves", "pages/collection-gloves.html", [["All gloves", "pages/collection-gloves.html"], ["Performance fit", "pages/collection-gloves.html#products"]]],
-    ["Accessories", "pages/collection-accessories.html", [["Shop all", "pages/collection-accessories.html"], ["Care and protection", "pages/collection-accessories.html#products"]]],
-    ["Services", "pages/services.html", [["Shaft compatibility", "pages/services.html#compatibility"], ["Warranty", "pages/services.html#warranty"], ["Contact us", "pages/services.html#contact"]]],
-    ["Blog", "pages/blog.html", [["Latest articles", "pages/blog.html"], ["Buying guides", "pages/blog-how-to-choose-the-right-shaft.html"]]]
+    { label: "Cues", url: "pages/collection-pool-cues.html", groups: [{ title: "Shop by cue", links: [["Pool cues", "pages/collection-pool-cues.html"], ["Break cues", "pages/collection-break-cues.html"], ["Jump cues", "pages/collection-jump-cues.html"]] }, { title: "Shop by goal", links: [["First carbon cue", "pages/collection-first-carbon-cue.html"], ["Break power", "pages/collection-break-power.html"], ["Difficult shots", "pages/collection-difficult-shots.html"]] }], visuals: [["collections/thumb-pool-cues-related-5x3-01.webp", "collections/thumb-break-cues-related-5x3-01.webp", "collections/thumb-jump-cues-related-5x3-01.webp"], ["collections/thumb-first-carbon-cue-related-5x3-01.webp", "collections/thumb-break-power-related-5x3-01.webp", "collections/thumb-difficult-shots-related-5x3-01.webp"]], promos: [["Complete setup", "First carbon cue kit", "pages/collection-first-carbon-cue.html", "recommendations/poster-first-carbon-cue-recommendation-4x5-01.webp"], ["Player solution", "Control difficult shots", "pages/collection-difficult-shots.html", "recommendations/poster-difficult-shots-recommendation-4x5-01.webp"]] },
+    { label: "Butts", url: "pages/collection-cue-butts.html", groups: [{ title: "Shop cue butts", links: [["All butts", "pages/collection-cue-butts.html"], ["Playing butts", "pages/collection-shop-cue-butts.html"], ["Break butts", "pages/collection-break-power.html"]] }, { title: "Build your cue", links: [["Single butts", "pages/collection-cue-butts.html"], ["Match a shaft", "pages/collection-carbon-shafts.html"], ["Joint compatibility", "pages/blog-understanding-joint-types.html"]] }], visuals: [["collections/thumb-cue-butts-related-5x3-01.webp", "collections/thumb-shop-cue-butts-related-5x3-01.webp", "collections/thumb-break-power-related-5x3-01.webp"], ["catalog/thumb-cue-butts-catalog-1x1-01.webp", "collections/thumb-carbon-shafts-related-5x3-01.webp", "guides/thumb-understanding-cue-joint-types-buying-guide-3x2-01.webp"]], promos: [["Build your cue", "Mix butt + shaft", "pages/collection-shop-cue-butts.html", "recommendations/poster-shop-cue-butts-recommendation-4x5-01.webp"], ["Fit guide", "Check your joint", "pages/blog-understanding-joint-types.html", "promotions/poster-understanding-cue-joint-types-store-4x5-01.webp"]] },
+    { label: "Shafts", url: "pages/collection-carbon-shafts.html", groups: [{ title: "Carbon shafts", links: [["All shafts", "pages/collection-carbon-shafts.html"], ["Pool shafts", "pages/collection-carbon-shafts.html#products"], ["Break shafts", "pages/collection-break-power.html"]] }, { title: "Shop by fit", links: [["Upgrade my shaft", "pages/collection-upgrade-my-shaft.html"], ["11.8–12.5 mm", "pages/collection-carbon-shafts.html#products"], ["12.8 mm", "pages/collection-carbon-shafts.html#products"]] }], visuals: [["collections/thumb-carbon-shafts-related-5x3-01.webp", "products/prod-upgrade-my-shaft-collection-1x1-01.webp", "collections/thumb-break-power-related-5x3-01.webp"], ["collections/thumb-upgrade-my-shaft-related-5x3-01.webp", "products/prod-carbon-shaft-starter-bundle-1x1-01.webp", "catalog/thumb-carbon-shafts-catalog-1x1-01.webp"]], promos: [["Upgrade path", "Keep the butt you love", "pages/collection-upgrade-my-shaft.html", "recommendations/poster-upgrade-my-shaft-recommendation-4x5-01.webp"], ["Editor's guide", "Choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html", "promotions/poster-how-to-choose-right-shaft-store-4x5-01.webp"]] },
+    { label: "Cases", url: "pages/collection-cases.html", groups: [{ title: "Shop cases", links: [["All cue cases", "pages/collection-cases.html"], ["Soft cases", "pages/collection-cases.html#products"], ["Hard cases", "pages/collection-cases.html#products"]] }, { title: "Choose by use", links: [["League night", "pages/collection-cases.html#products"], ["Tournament travel", "pages/collection-cases.html#products"], ["Complete setups", "pages/collection-first-carbon-cue.html"]] }], visuals: [["collections/thumb-cases-related-5x3-01.webp", "collections/hero-cases-collection-desktop-01.webp", "products/prod-carbon-shaft-starter-bundle-1x1-01.webp"], ["collections/thumb-first-carbon-cue-related-5x3-01.webp", "collections/thumb-cases-related-5x3-01.webp", "promotions/poster-retro-ii-complete-setups-desktop-01.webp"]], promos: [["Travel ready", "Protect the complete setup", "pages/collection-cases.html", "collections/hero-cases-collection-desktop-01.webp"], ["Recommended setup", "Pack for league night", "pages/collection-first-carbon-cue.html", "promotions/poster-retro-ii-complete-setups-desktop-01.webp"]] },
+    { label: "Gloves", url: "pages/collection-gloves.html", groups: [{ title: "Shop gloves", links: [["All pool gloves", "pages/collection-gloves.html"], ["Left hand", "pages/collection-gloves.html#products"], ["Right hand", "pages/collection-gloves.html#products"]] }, { title: "Find your fit", links: [["Size guide", "pages/collection-gloves.html#size-guide"], ["Glove packs", "pages/collection-gloves.html#packs"], ["Complete setup", "pages/collection-gloves.html#complete-setup"]] }], visuals: [["collections/thumb-pure-pool-glove-related-5x3-01.webp", "products/gloves/prod-pure-pool-glove-left-grey-1x1-01.webp", "products/gloves/prod-pure-pool-glove-right-black-1x1-01.webp"], ["promotions/poster-pure-pool-glove-single-navigation-desktop-01.webp", "products/gloves/prod-pure-pool-glove-pack-3-mixed-1x1-01.webp", "promotions/poster-pure-pool-glove-complete-setup-desktop-01.webp"]], promos: [["Pure glove", "Smooth, repeatable delivery", "pages/collection-gloves.html", "promotions/poster-pure-pool-glove-single-navigation-desktop-01.webp"], ["Multi-buy", "Build your glove rotation", "pages/collection-gloves.html#packs", "promotions/poster-pure-pool-glove-multibuy-desktop-01.webp"]] },
+    { label: "Accessories", url: "pages/collection-accessories.html", groups: [{ title: "Shop accessories", links: [["Shop all", "pages/collection-accessories.html"], ["Chalk", "pages/collection-accessories.html#products"], ["Joint protectors", "pages/collection-accessories.html#products"]] }, { title: "Care + prepare", links: [["Cue maintenance", "pages/collection-accessories.html#products"], ["Cases", "pages/collection-cases.html"], ["Care checklist", "pages/blog-cue-care-checklist.html"]] }], visuals: [["collections/thumb-accessories-related-5x3-01.webp", "catalog/thumb-accessories-catalog-1x1-01.webp", "products/prod-carbon-shaft-starter-bundle-1x1-01.webp"], ["guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp", "collections/thumb-cases-related-5x3-01.webp", "products/prod-first-carbon-cue-collection-1x1-01.webp"]], promos: [["Player essentials", "Complete the match-day kit", "pages/collection-accessories.html", "collections/hero-accessories-collection-desktop-01.webp"], ["Quick guide", "Cue care checklist", "pages/blog-cue-care-checklist.html", "guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"]] },
+    { label: "Services", url: "pages/services.html", groups: [{ title: "Choose with confidence", links: [["Cue finder", "pages/collection-difficult-shots.html"], ["Shaft compatibility", "pages/services.html#compatibility"], ["Our story", "pages/services.html#our-story"]] }, { title: "After your order", links: [["Warranty", "pages/services.html#warranty"], ["Easy exchange", "pages/services.html#warranty"], ["Contact us", "pages/services.html#contact"]] }], visuals: [["collections/thumb-difficult-shots-related-5x3-01.webp", "guides/thumb-understanding-cue-joint-types-buying-guide-3x2-01.webp", "services/des-factory-direct-carbon-service-5x4-01.webp"], ["recommendations/poster-difficult-shots-recommendation-4x5-01.webp", "catalog/thumb-accessories-catalog-1x1-01.webp", "collections/thumb-first-carbon-cue-related-5x3-01.webp"]], promos: [["Free guidance", "Find the right setup", "pages/services.html#contact", "recommendations/poster-difficult-shots-recommendation-4x5-01.webp"], ["Player promise", "Warranty + easy exchange", "pages/services.html#warranty", "collections/thumb-first-carbon-cue-related-5x3-01.webp"]] },
+    { label: "Blog", url: "pages/blog.html", groups: [{ title: "Explore", links: [["Latest articles", "pages/blog.html"], ["Buying guides", "pages/blog.html"], ["Player stories", "pages/blog.html"]] }, { title: "Popular guides", links: [["Choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html"], ["Carbon vs wood", "pages/blog-carbon-vs-wood-shaft.html"], ["Cue care checklist", "pages/blog-cue-care-checklist.html"]] }], visuals: [["guides/thumb-how-to-choose-right-shaft-buying-guide-3x2-01.webp", "guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp", "guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"], ["guides/thumb-how-to-choose-right-shaft-buying-guide-3x2-01.webp", "guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp", "guides/thumb-cue-care-checklist-buying-guide-3x2-01.webp"]], promos: [["Start here", "How to choose the right shaft", "pages/blog-how-to-choose-the-right-shaft.html", "promotions/poster-how-to-choose-right-shaft-store-4x5-01.webp"], ["Popular read", "Carbon shaft vs wood shaft", "pages/blog-carbon-vs-wood-shaft.html", "guides/thumb-carbon-vs-wood-shaft-buying-guide-3x2-01.webp"]] }
   ];
 
   const safeRead = (key, fallback) => {
@@ -146,7 +146,7 @@
     catch (error) { return fallback; }
   };
   const state = {
-    currency: (() => { try { const value = localStorage.getItem("cuebotsCurrency") || "USD"; return CURRENCY[value] ? value : "USD"; } catch (error) { return "USD"; } })(),
+    currency: (() => { try { const value = sessionStorage.getItem("cuebotsCurrency") || "USD"; return CURRENCY[value] ? value : "USD"; } catch (error) { return "USD"; } })(),
     cart: safeRead("cuebotsHomeCart", []),
     wishlist: safeRead("cuebotsHomeWishlist", {}),
     filter: "all",
@@ -172,7 +172,7 @@
 
   function save() {
     try {
-      localStorage.setItem("cuebotsCurrency", state.currency);
+      sessionStorage.setItem("cuebotsCurrency", state.currency);
       localStorage.setItem("cuebotsHomeCart", JSON.stringify(state.cart));
       localStorage.setItem("cuebotsHomeWishlist", JSON.stringify(state.wishlist));
     } catch (error) { /* Keep the demo usable when storage is blocked. */ }
@@ -183,13 +183,21 @@
   }
 
   function renderSharedChrome() {
-    const nav = NAV.map(([label, url, links]) => `<div class="nav-item has-dropdown"><a class="nav-link" href="${path(url)}">${label}</a><div class="nav-dropdown store-dropdown"><section class="dropdown-group"><h3>${label}</h3>${links.map(([text, href]) => `<a href="${path(href)}">${text}</a>`).join("")}</section></div></div>`).join("");
-    const mobile = NAV.map(([label, url]) => `<a href="${path(url)}">${label}</a>`).join("");
-    $("[data-shared-header]").innerHTML = `${iconSprite()}<div id="top" class="announcement"><div class="announcement-row"><span>FREE SHIPPING ON ORDERS OVER $99</span><label><span class="sr-only">Currency</span><select class="locale-select" aria-label="Currency" data-currency-select>${Object.keys(CURRENCY).map(key => `<option value="${key}"${key === state.currency ? " selected" : ""}>${key}</option>`).join("")}</select></label></div></div><header class="site-header"><div class="container header-row"><button class="icon-btn mobile-menu-btn" type="button" aria-label="Open menu" aria-controls="storeMobileMenu" aria-expanded="false" data-open-menu><svg class="icon"><use href="#i-menu"></use></svg></button><a class="brand" href="${path("index.html")}" aria-label="CUEBOTS home"><img src="${path("assets/images/brand/logo-cuebots-horizontal-blue-01.webp")}" width="138" height="34" alt="CUEBOTS"></a><nav class="desktop-nav" aria-label="Main navigation">${nav}</nav><div class="header-actions"><button class="icon-btn" type="button" aria-label="Search products" data-open-search><svg class="icon"><use href="#i-search"></use></svg></button><button class="icon-btn hide-mobile" type="button" aria-label="Open account sign in" data-open-account><svg class="icon"><use href="#i-user"></use></svg></button><button class="icon-btn cart-trigger" type="button" aria-label="Open cart" data-open-cart><svg class="icon"><use href="#i-cart"></use></svg><span class="cart-badge" data-cart-count>0</span></button></div></div></header>`;
+    const nav = `<div class="nav-item"><a class="nav-link" href="${path("index.html")}">Home</a></div>` + NAV.map(item => {
+      const menuId = `mega-${item.label.toLowerCase()}`;
+      const tabs = item.groups.map((group, index) => `<button class="mega-menu-tab${index === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${index === 0}" aria-controls="${menuId}-panel-${index}" data-mega-panel-index="${index}"><span>${group.title}</span><span aria-hidden="true">→</span></button>`).join("");
+      const panels = item.groups.map((group, groupIndex) => {
+        const promo = item.promos[groupIndex];
+        const cards = group.links.map(([label, url], linkIndex) => `<a class="mega-visual-card" href="${path(url)}"><span class="mega-visual-media"><img src="${path(`assets/images/${item.visuals[groupIndex][linkIndex]}`)}" width="500" height="300" alt="" loading="lazy" decoding="async"></span><span class="mega-visual-label">${label}<span aria-hidden="true">→</span></span></a>`).join("");
+        return `<section class="mega-menu-panel${groupIndex === 0 ? " active" : ""}" id="${menuId}-panel-${groupIndex}" role="tabpanel" data-mega-panel="${groupIndex}"${groupIndex === 0 ? "" : " hidden"}><div class="mega-panel-title"><span>${group.title}</span><a href="${path(item.url)}">VIEW ALL <span aria-hidden="true">→</span></a></div><div class="mega-visual-grid">${cards}<a class="mega-promo-card" href="${path(promo[2])}"><img src="${path(`assets/images/${promo[3]}`)}" width="500" height="600" alt="" loading="lazy" decoding="async"><span><small>${promo[0]}</small><strong>${promo[1]}</strong><b>EXPLORE <span aria-hidden="true">→</span></b></span></a></div></section>`;
+      }).join("");
+      return `<div class="nav-item has-dropdown"><a class="nav-link" href="${path(item.url)}" aria-haspopup="true" aria-expanded="false" aria-controls="${menuId}" data-mega-trigger>${item.label}</a><div class="nav-dropdown mega-menu store-dropdown" id="${menuId}" aria-label="${item.label} mega menu"><div class="mega-menu-shell"><aside class="mega-menu-sidebar"><small>EXPLORE ${item.label.toUpperCase()}</small><div class="mega-menu-tabs" role="tablist" aria-label="${item.label} navigation groups">${tabs}</div><a class="mega-menu-view-all" href="${path(item.url)}">VIEW ALL ${item.label.toUpperCase()} <span aria-hidden="true">→</span></a></aside><div class="mega-menu-content">${panels}</div></div></div></div>`;
+    }).join("");
+    const mobile = `<a class="mobile-nav-card" href="${path("index.html")}"><img src="${path("assets/images/heroes/hero-carbon-pool-shaft-desktop-01.webp")}" width="500" height="300" alt="" loading="lazy"><span><strong>Home</strong><small>RETURN →</small></span></a>` + NAV.map(item => `<a class="mobile-nav-card" href="${path(item.url)}"><img src="${path(`assets/images/${item.visuals[0][0]}`)}" width="500" height="300" alt="" loading="lazy"><span><strong>${item.label}</strong><small>EXPLORE →</small></span></a>`).join("");
+    $("[data-shared-header]").innerHTML = `${iconSprite()}<div id="top" class="announcement"><div class="announcement-row"><span>FREE SHIPPING ON ORDERS OVER $99</span><label><span class="sr-only">Currency</span><select class="locale-select" aria-label="Currency" data-currency-select>${Object.keys(CURRENCY).map(key => `<option value="${key}"${key === state.currency ? " selected" : ""}>${key}</option>`).join("")}</select></label></div></div><header class="site-header"><div class="container header-row"><button class="icon-btn mobile-menu-btn" type="button" aria-label="Open menu" aria-controls="storeMobileMenu" aria-expanded="false" data-open-menu><svg class="icon"><use href="#i-menu"></use></svg></button><a class="brand" href="${path("index.html")}" aria-label="CUEBOTS home"><img src="${path("assets/images/brand/logo-cuebots-horizontal-blue-01.webp")}" width="138" height="34" alt="CUEBOTS"></a><nav class="desktop-nav" aria-label="Main navigation">${nav}</nav><div class="header-actions"><button class="icon-btn" type="button" aria-label="Search products" data-open-search><svg class="icon"><use href="#i-search"></use></svg></button><div class="account-entry hide-mobile"><button class="icon-btn" type="button" aria-label="Open account sign in" data-open-account><svg class="icon"><use href="#i-user"></use></svg></button><div class="account-popover" aria-label="Account options"><small>PLAYER ACCOUNT</small><h2>Welcome to CUEBOTS</h2><p>Track orders, save equipment and get faster recommendations.</p><button class="btn" type="button" data-open-account data-account-mode="signin">SIGN IN</button><button class="btn btn-secondary" type="button" data-open-account data-account-mode="signup">CREATE NEW ACCOUNT</button><a class="account-promo" href="${path("pages/collection-first-carbon-cue.html")}"><img src="${path("assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp")}" width="500" height="300" alt="" loading="lazy"><span><small>NEW PLAYER?</small><strong>Find your first setup</strong><b>EXPLORE →</b></span></a></div></div><button class="icon-btn cart-trigger" type="button" aria-label="Open cart" data-open-cart><svg class="icon"><use href="#i-cart"></use></svg><span class="cart-badge" data-cart-count>0</span></button></div></div></header>`;
     $("[data-shared-footer]").innerHTML = `<section class="newsletter" aria-labelledby="store-newsletter"><div class="container newsletter-row"><div class="newsletter-copy"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><div><h2 id="store-newsletter">JOIN 10,000+ PLAYERS</h2><p>Get tips, new releases and exclusive offers.</p></div></div><form class="newsletter-form" data-newsletter><label class="sr-only" for="storeEmail">Email address</label><input id="storeEmail" type="email" placeholder="Enter your email" required><button class="btn" type="submit">SUBSCRIBE</button><p class="form-status" data-newsletter-status aria-live="polite"></p></form></div></section><footer class="site-footer"><div class="container footer-grid"><section class="footer-brand"><a href="#top" aria-label="Scroll to the top of this page"><img src="${path("assets/images/brand/logo-cuebots-horizontal-white-01.webp")}" width="190" height="48" alt="CUEBOTS — Powered by Carbon"></a><p>Engineered for performance. Built for players. Premium carbon cues, shafts and accessories designed to help you play your best.</p><a class="footer-story" href="${path("pages/services.html#our-story")}"><span>OUR STORY</span><span class="footer-story-icon" aria-hidden="true"><svg class="icon"><use href="#i-chevron-right"></use></svg></span></a></section><section><h2>CUEBOTS COMPANY LIMITED</h2><address><p>N03-T1 Spring Tower, Gold Season, 47 Nguyen Tuan Street, Thanh Xuan District, Hanoi, Vietnam</p><p>US Office: 30 N Gould St Ste N, Sheridan, WY 82801, US</p><p><a href="mailto:cs@cuebots.com">cs@cuebots.com</a></p><p><a href="tel:+13074501670">+1 307 450 1670</a></p><p>9:00 AM – 5:30 PM, Monday to Saturday</p></address></section><div class="footer-links"><section class="footer-column"><h2>SHOP</h2><ul><li><a href="${path("pages/collection-pool-cues.html")}">All cues</a></li><li><a href="${path("pages/collection-carbon-shafts.html")}">Shafts</a></li><li><a href="${path("pages/collection-cue-butts.html")}">Butts</a></li><li><a href="${path("pages/collection-accessories.html")}">Accessories</a></li></ul></section><section class="footer-column"><h2>SUPPORT</h2><ul><li><a href="${path("pages/services.html#our-story")}">About us</a></li><li><a href="${path("pages/services.html#warranty")}">Warranty</a></li><li><a href="${path("pages/services.html#contact")}">Contact us</a></li></ul></section><section class="footer-column"><h2>RESOURCES</h2><ul><li><a href="${path("pages/blog.html")}">Buying guides</a></li><li><a href="${path("pages/collection-difficult-shots.html")}">Cue finder</a></li><li><a href="${path("pages/blog-understanding-joint-types.html")}">Joint compatibility</a></li></ul></section></div></div><div class="container footer-bottom"><p>© 2026 CUEBOTS. All rights reserved.</p><div class="payment-list" aria-label="Accepted payment methods">${["logo-visa-payment-color-01.webp", "logo-mastercard-payment-color-01.webp", "logo-american-express-payment-color-01.webp", "logo-paypal-payment-color-01.webp", "logo-apple-pay-payment-color-01.webp", "logo-google-pay-payment-color-01.webp", "logo-shop-pay-payment-color-01.webp"].map((file, index) => `<span class="payment-item"><img src="${path(`assets/images/payments/${file}`)}" width="54" height="27" alt="${["Visa", "Mastercard", "American Express", "PayPal", "Apple Pay", "Google Pay", "Shop Pay"][index]}"></span>`).join("")}</div><div class="social-links" aria-label="Social media"><a class="social-facebook" href="https://www.facebook.com/" aria-label="Facebook">f</a><a class="social-youtube" href="https://www.youtube.com/" aria-label="YouTube">▶</a><a class="social-instagram" href="https://www.instagram.com/" aria-label="Instagram">◎</a><a class="social-tiktok" href="https://www.tiktok.com/" aria-label="TikTok">♪</a></div></div></footer>`;
     $(".social-links").innerHTML = `<a class="social-facebook" href="https://www.facebook.com/" aria-label="Facebook"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path class="social-fill" d="M14.2 8H12.5c-1.2 0-1.5.6-1.5 1.5V12h3l-.5 3H11v7H7.5v-7H5v-3h2.5V9.2C7.5 6.1 9.4 4 12.8 4h1.4v4Z"/></svg></a><a class="social-youtube" href="https://www.youtube.com/" aria-label="YouTube"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path class="social-fill" d="m10 9 5 3-5 3V9Z"/></svg></a><a class="social-instagram" href="https://www.instagram.com/" aria-label="Instagram"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="social-fill" cx="17.4" cy="6.7" r="1"/></svg></a><a class="social-tiktok" href="https://www.tiktok.com/" aria-label="TikTok"><svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.2a4.3 4.3 0 1 1-3.4-4.2v3.2a1.5 1.5 0 1 0 .6 1.2V3H14Zm0 0c.7 2.5 2.5 4.3 5 5v3.2a9 9 0 0 1-5-2.1"/></svg></a>`;
-    $("[data-shared-surfaces]").innerHTML = `<div class="overlay" data-overlay></div><aside class="mobile-drawer" id="storeMobileMenu" role="dialog" aria-modal="true" aria-hidden="true"><div class="drawer-header"><h2>Menu</h2><button class="icon-btn" type="button" aria-label="Close menu" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><nav class="mobile-nav" aria-label="Mobile navigation">${mobile}</nav><button class="mobile-account-button" type="button" data-open-account><svg class="icon"><use href="#i-user"></use></svg><span>ACCOUNT SIGN IN</span></button></aside><section class="search-dialog" role="dialog" aria-modal="true" aria-hidden="true" data-search-dialog><div class="drawer-header"><h2>Search products</h2><button class="icon-btn" type="button" aria-label="Close search" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="search-input-row"><svg class="icon"><use href="#i-search"></use></svg><input type="search" placeholder="Search cues, shafts and accessories" aria-label="Search products" data-search-input><button type="button" data-clear-search>Clear</button></div><div class="search-results" data-search-results></div></section><aside class="cart-drawer" role="dialog" aria-modal="true" aria-hidden="true" data-cart-drawer><div class="drawer-header"><h2>Your cart</h2><button class="icon-btn" type="button" aria-label="Close cart" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="drawer-body" data-cart-items></div><div class="drawer-footer"><div class="subtotal"><span>Subtotal</span><strong data-cart-subtotal>${money(0)}</strong></div><button class="btn" type="button" data-checkout>CHECKOUT</button><p>Secure demo checkout. No payment will be processed.</p></div></aside><section class="quick-modal" role="dialog" aria-modal="true" aria-hidden="true" data-quick-modal><div class="drawer-header"><h2>Quick view</h2><button class="icon-btn" type="button" aria-label="Close quick view" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="quick-body" data-quick-body></div></section><section class="account-modal" role="dialog" aria-modal="true" aria-hidden="true" data-account-modal><div class="drawer-header"><h2>Account sign in</h2><button class="icon-btn" type="button" aria-label="Close account" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><form class="account-form" data-account-form><p>Enter your account details to continue.</p><label>Email address<input type="email" autocomplete="email" required></label><label>Password<input type="password" minlength="6" autocomplete="current-password" required></label><button class="btn" type="submit">SIGN IN</button><p class="form-status" data-account-status></p></form></section><div class="toast" data-toast role="status" aria-live="polite"></div>`;
-    $("[data-shared-surfaces]").insertAdjacentHTML("beforeend", `<aside class="email-capture-popup" data-email-popup aria-hidden="true" aria-labelledby="emailCaptureTitle"><button class="email-capture-close" type="button" aria-label="Close email offer" data-close-email><svg class="icon"><use href="#i-x"></use></svg></button><div class="email-capture-media">${image("promotions/thumb-pure-pool-glove-email-offer-4x5-01.webp", "CUEBOTS pool glove color collection")}</div><div class="email-capture-copy"><p class="eyebrow">PLAYER-ONLY OFFERS</p><h2 id="emailCaptureTitle">Get 10% off your first glove order.</h2><p>Join for new colors, fit advice and early access to bundle offers.</p><form data-email-capture><label class="sr-only" for="captureEmail">Email address</label><div><input id="captureEmail" name="email" type="email" autocomplete="email" placeholder="Enter your email" required><button class="btn" type="submit">UNLOCK 10%</button></div><small>No spam. Unsubscribe any time.</small><p class="form-status" data-email-capture-status aria-live="polite"></p></form></div></aside>`);
+    $("[data-shared-surfaces]").innerHTML = `<div class="overlay" data-overlay></div><aside class="mobile-drawer" id="storeMobileMenu" role="dialog" aria-modal="true" aria-hidden="true"><div class="drawer-header"><h2>Menu</h2><button class="icon-btn" type="button" aria-label="Close menu" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><nav class="mobile-nav" aria-label="Mobile navigation">${mobile}</nav><button class="mobile-account-button" type="button" data-open-account><svg class="icon"><use href="#i-user"></use></svg><span>ACCOUNT SIGN IN</span></button></aside><section class="search-dialog" role="dialog" aria-modal="true" aria-hidden="true" data-search-dialog><div class="drawer-header"><h2>Search products</h2><button class="icon-btn" type="button" aria-label="Close search" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="search-input-row"><svg class="icon"><use href="#i-search"></use></svg><input type="search" placeholder="Search cues, shafts and accessories" aria-label="Search products" data-search-input><button type="button" data-clear-search>Clear</button></div><div class="search-results" data-search-results></div></section><aside class="cart-drawer" role="dialog" aria-modal="true" aria-hidden="true" data-cart-drawer><div class="drawer-header"><h2>Your cart</h2><button class="icon-btn" type="button" aria-label="Close cart" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="drawer-body" data-cart-items></div><div class="drawer-footer"><p class="shipping-reminder" data-shipping-reminder></p><div class="subtotal"><span>Subtotal</span><strong data-cart-subtotal>${money(0)}</strong></div><button class="btn" type="button" data-checkout>CHECKOUT</button><p>Secure demo checkout. No payment will be processed.</p></div></aside><section class="quick-modal" role="dialog" aria-modal="true" aria-hidden="true" data-quick-modal><div class="drawer-header"><h2>Quick view</h2><button class="icon-btn" type="button" aria-label="Close quick view" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="quick-body" data-quick-body></div></section><section class="account-modal" role="dialog" aria-modal="true" aria-hidden="true" data-account-modal><div class="drawer-header"><h2 data-account-title>Account sign in</h2><button class="icon-btn" type="button" aria-label="Close account" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><form class="account-form" data-account-form><p data-account-intro>Enter your account details to continue.</p><label>Email address<input type="email" autocomplete="email" required></label><label>Password<input type="password" minlength="6" autocomplete="current-password" required data-account-password></label><button class="btn" type="submit" data-account-submit>SIGN IN</button><button class="account-mode-switch" type="button" data-account-mode="signup">New to CUEBOTS? Create an account</button><p class="form-status" data-account-status></p></form><a class="account-modal-promo" href="${path("pages/collection-first-carbon-cue.html")}"><img src="${path("assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp")}" width="600" height="360" alt="" loading="lazy"><span><small>PLAYER STARTER</small><strong>Build your first carbon setup</strong><b>EXPLORE →</b></span></a></section><div class="toast" data-toast role="status" aria-live="polite"></div>`;
   }
 
   function stars(rating) {
@@ -267,8 +275,15 @@
     $("[data-catalog-count]").textContent = `${products.length} products selected for this collection`;
   }
 
+  function rememberProduct(id) {
+    const recent = safeRead("cuebotsRecentlyViewed", []).filter(itemId => itemId !== id);
+    recent.unshift(id);
+    try { localStorage.setItem("cuebotsRecentlyViewed", JSON.stringify(recent.slice(0, 8))); } catch (error) { /* Storage can be unavailable in private contexts. */ }
+  }
+
   function renderProduct() {
     const product = PRODUCTS.find(item => item.slug === PAGE || item.id === PAGE) || PRODUCTS[0];
+    rememberProduct(product.id);
     const review = REVIEWS[product.slug] || { customer: "Verified player", rating: 5, text: "A dependable addition to my setup with the consistent feel I was looking for." };
     const recommendations = PRODUCTS.filter(item => item.id !== product.id && item.tags.some(tag => product.tags.includes(tag))).slice(0, 4);
     document.title = `${product.name} | CUEBOTS`;
@@ -287,11 +302,19 @@
     $("[data-page-content]").innerHTML = `<nav class="store-breadcrumb container" aria-label="Breadcrumb"><a href="${path("index.html")}">Home</a><span>/</span><span>Checkout</span></nav><section class="store-section"><div class="container checkout-layout"><form class="checkout-form" data-checkout-form><div><p class="eyebrow">Secure demo checkout</p><h1>Delivery details</h1><p>No payment will be processed in this prototype.</p></div><div class="checkout-fields"><label>First name<input type="text" required></label><label>Last name<input type="text" required></label><label class="full">Email<input type="email" required></label><label class="full">Address<input type="text" required></label><label>City<input type="text" required></label><label>Postal code<input type="text" required></label><label class="full">Country<select required><option>United States</option><option>Vietnam</option><option>Canada</option><option>Australia</option></select></label></div><button class="btn" type="submit"${items.length ? "" : " disabled"}>PLACE DEMO ORDER</button><p class="form-status" data-checkout-status></p></form><aside class="checkout-summary"><h2>Order summary</h2>${items.length ? items.map(item => `<div class="checkout-item">${image(item.product.image, item.product.name)}<div><strong>${item.product.name}</strong><span>Qty ${item.qty}</span></div><b>${money(item.product.price * item.qty)}</b></div>`).join("") : `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a product before checking out.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">CONTINUE SHOPPING</a></div>`}<div class="checkout-total"><span>Total</span><strong>${money(total)}</strong></div></aside></div></section>`;
   }
 
+  function renderModernCheckout() {
+    document.title = "Secure Checkout | CUEBOTS";
+    const items = state.cart.map(item => ({ ...item, product: cartItemProduct(item.id) })).filter(item => item.product);
+    const total = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const itemMarkup = items.length ? items.map(item => `<div class="checkout-item">${image(item.product.image, item.product.name)}<div><strong>${item.product.name}</strong><span>${cartVariant(item, item.product)} · Qty ${item.qty}</span></div><b>${money(item.product.price * item.qty)}</b></div>`).join("") : `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a product before checking out.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">CONTINUE SHOPPING</a></div>`;
+    $("[data-page-content]").innerHTML = `<nav class="store-breadcrumb container" aria-label="Breadcrumb"><a href="${path("index.html")}">Home</a><span>/</span><span>Secure checkout</span></nav><section class="store-section checkout-section"><div class="container"><div class="checkout-head"><div><p class="eyebrow">SECURE DEMO CHECKOUT</p><h1>Review before you place the order.</h1><p>Enter delivery details first. You will see one final confirmation screen before the order is placed.</p></div><span>🔒 SECURE SESSION</span></div><div class="checkout-process" aria-label="Checkout progress"><div class="active" data-checkout-step="details"><span>1</span><strong>Delivery</strong><small>Address & contact</small></div><i></i><div data-checkout-step="review"><span>2</span><strong>Review</strong><small>Confirm every detail</small></div><i></i><div data-checkout-step="complete"><span>3</span><strong>Complete</strong><small>Order confirmation</small></div></div><div class="checkout-layout"><form class="checkout-form checkout-form-modern" data-checkout-form data-checkout-stage="details" novalidate><section data-checkout-details><div class="checkout-form-title"><span>1</span><div><h2>Delivery information</h2><p>Fields marked required must be completed before review.</p></div></div><div class="checkout-fields"><label>First name<input name="firstName" type="text" autocomplete="given-name" required></label><label>Last name<input name="lastName" type="text" autocomplete="family-name" required></label><label class="full">Email address<input name="email" type="email" autocomplete="email" required></label><label class="full">Street address<input name="address" type="text" autocomplete="street-address" required></label><label>City<input name="city" type="text" autocomplete="address-level2" required></label><label>Postal code<input name="postalCode" type="text" autocomplete="postal-code" required></label><label class="full">Country<select name="country" autocomplete="country-name" required><option>United States</option><option>Vietnam</option><option>Canada</option><option>Australia</option></select></label></div><fieldset class="checkout-delivery-method"><legend>Delivery method</legend><label><input name="deliveryMethod" type="radio" value="Standard tracked shipping" checked><span><strong>Standard tracked shipping</strong><small>Estimated 5–8 business days</small></span><b>FREE</b></label><label><input name="deliveryMethod" type="radio" value="Express shipping"><span><strong>Express shipping</strong><small>Estimated 2–4 business days</small></span><b>$18</b></label></fieldset><div class="checkout-payment-note"><span aria-hidden="true">✓</span><div><strong>Payment confirmation comes next</strong><p>No payment is processed in this prototype. The final screen clearly identifies the action that places the demo order.</p></div></div><button class="btn checkout-primary-action" type="submit"${items.length ? "" : " disabled"}>REVIEW ADDRESS & ORDER <span>→</span></button></section><section class="checkout-review" data-checkout-review hidden><div class="checkout-form-title"><span>2</span><div><h2>Confirm your order</h2><p>Check the delivery address and products before placing the order.</p></div></div><div class="checkout-review-card"><header><strong>Delivery address</strong><button type="button" data-edit-checkout>EDIT</button></header><p data-checkout-review-name></p><p data-checkout-review-address></p><p data-checkout-review-contact></p><p data-checkout-review-method></p></div><label class="checkout-confirm-check"><input type="checkbox" name="confirmation" required disabled><span>I confirm that the delivery address and order details are correct.</span></label><button class="btn checkout-primary-action checkout-confirm-action" type="submit">CONFIRM & PLACE ORDER · ${money(total)}</button><button class="checkout-edit-link" type="button" data-edit-checkout>← EDIT DELIVERY INFORMATION</button></section><p class="form-status checkout-status" data-checkout-status aria-live="polite"></p></form><aside class="checkout-summary"><div class="checkout-summary-head"><h2>Order summary</h2><span>${items.reduce((sum, item) => sum + item.qty, 0)} items</span></div>${itemMarkup}<div class="checkout-cost-row"><span>Subtotal</span><b>${money(total)}</b></div><div class="checkout-cost-row"><span>Standard shipping</span><b>${total >= FREE_SHIPPING_THRESHOLD ? "FREE" : "Calculated"}</b></div><div class="checkout-total"><span>Order total</span><strong>${money(total)}</strong></div><p class="checkout-assurance">Limited lifetime warranty · Easy exchange · Secure order review</p></aside></div></div></section>`;
+  }
+
   function renderPage() {
     if (TYPE === "collection") renderCollection();
     if (TYPE === "product") renderProduct();
     if (TYPE === "services") renderServices();
-    if (TYPE === "checkout") renderCheckout();
+    if (TYPE === "checkout") renderModernCheckout();
   }
 
   function cartItemProduct(id) {
@@ -309,15 +332,151 @@
       copy: "CUEBOTS performance equipment selected from the home collection."
     };
   }
+  const FREE_SHIPPING_THRESHOLD = 99;
+
+  function cartSku(id) {
+    return `CB-${String(id || "ITEM").replace(/[^a-z0-9]+/gi, "-").toUpperCase()}`;
+  }
+
+  function cartVariant(item, product) {
+    if (item.variant) return item.variant;
+    if (product.tags.includes("glove")) {
+      const color = product.color && product.color !== "Mixed" ? product.color : "Mixed colors";
+      const hand = product.hand && product.hand !== "Both" ? `${product.hand} Hand` : "Both hands";
+      return `Pure ${color} / ${hand} / Size ${item.size || product.sizes?.[0] || "M"}`;
+    }
+    if (product.tags.includes("shaft")) return "Carbon shaft / Standard joint selection";
+    if (product.tags.includes("break")) return "Break setup / Performance configuration";
+    if (product.tags.includes("case")) return "Cue case / Standard configuration";
+    if (product.tags.includes("bundle")) return "Complete bundle / Standard configuration";
+    return "CUEBOTS standard configuration";
+  }
+
+  const STORE_LOYALTY_TIERS = [
+    { id: "launch", name: "Launch Member", min: 0, icon: "✦", headline: "Your rewards journey has begun." },
+    { id: "orbit", name: "Orbit Member", min: 200, icon: "★", headline: "You have entered a new orbit." },
+    { id: "nova", name: "Nova Member", min: 1000, icon: "✷", headline: "Your player status just went Nova." },
+    { id: "celestial", name: "Celestial VIP", min: 1500, icon: "✧", headline: "Celestial privileges are now yours." },
+    { id: "dark-voyager", name: "Dark Voyager Elite", min: 2000, icon: "◆", headline: "The black card has chosen you." }
+  ];
+
+  const spendTierIndex = spend => STORE_LOYALTY_TIERS.reduce((result, tier, index) => Number(spend) >= tier.min ? index : result, 0);
+
+  function checkoutShipping(form) {
+    const data = new FormData(form);
+    const value = name => String(data.get(name) || "").trim();
+    return {
+      name: `${value("firstName")} ${value("lastName")}`.trim(),
+      email: value("email"),
+      address: value("address"),
+      city: value("city"),
+      postalCode: value("postalCode"),
+      country: value("country"),
+      deliveryMethod: value("deliveryMethod")
+    };
+  }
+
+  function showCheckoutReview(form) {
+    const shipping = checkoutShipping(form);
+    form.dataset.checkoutStage = "review";
+    form.querySelector("[data-checkout-details]").hidden = true;
+    form.querySelector("[data-checkout-review]").hidden = false;
+    form.querySelector('[name="confirmation"]').disabled = false;
+    form.querySelector("[data-checkout-review-name]").textContent = shipping.name;
+    form.querySelector("[data-checkout-review-address]").textContent = `${shipping.address}, ${shipping.city} ${shipping.postalCode}, ${shipping.country}`;
+    form.querySelector("[data-checkout-review-contact]").textContent = shipping.email;
+    form.querySelector("[data-checkout-review-method]").textContent = shipping.deliveryMethod;
+    document.querySelector("[data-checkout-step='details']")?.classList.add("complete");
+    document.querySelector("[data-checkout-step='review']")?.classList.add("active");
+    form.closest(".checkout-layout")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function editCheckout(form) {
+    form.dataset.checkoutStage = "details";
+    form.querySelector("[data-checkout-review]").hidden = true;
+    form.querySelector("[data-checkout-details]").hidden = false;
+    const confirmation = form.querySelector('[name="confirmation"]');
+    if (confirmation) {
+      confirmation.checked = false;
+      confirmation.disabled = true;
+    }
+    document.querySelector("[data-checkout-step='review']")?.classList.remove("active");
+  }
+
+  function recordDemoOrder(shipping = null) {
+    const items = state.cart.map(item => {
+      const product = cartItemProduct(item.id);
+      return product ? { id: product.id, name: product.name, qty: item.qty, price: product.price } : null;
+    }).filter(Boolean);
+    const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+    if (!items.length || total <= 0) return null;
+    const previousSpend = Math.max(0, Number(safeRead("cuebotsLifetimeSpend", 0)) || 0);
+    const newSpend = previousSpend + total;
+    const previousTierIndex = spendTierIndex(previousSpend);
+    const newTierIndex = spendTierIndex(newSpend);
+    const order = {
+      id: `CB-${Date.now().toString(36).toUpperCase()}`,
+      placedAt: new Date().toISOString(),
+      total,
+      items,
+      shipping
+    };
+    const historyValue = safeRead("cuebotsOrderHistory", []);
+    const history = Array.isArray(historyValue) ? historyValue : [];
+    const currentYear = new Date().getFullYear();
+    const annualRecord = safeRead("cuebotsAnnualSpend", {});
+    const annualBase = Number(annualRecord?.year) === currentYear ? Math.max(0, Number(annualRecord.amount) || 0) : 0;
+    try {
+      localStorage.setItem("cuebotsOrderHistory", JSON.stringify([order, ...history].slice(0, 50)));
+      localStorage.setItem("cuebotsLifetimeSpend", JSON.stringify(newSpend));
+      localStorage.setItem("cuebotsAnnualSpend", JSON.stringify({ year: currentYear, amount: annualBase + total }));
+    } catch (error) { /* Checkout confirmation remains available when storage is restricted. */ }
+    return { order, previousSpend, newSpend, rankUp: newTierIndex > previousTierIndex ? STORE_LOYALTY_TIERS[newTierIndex] : null };
+  }
+
+  function showRankUpCelebration(tier) {
+    const benefits = {
+      orbit: "Early access to member-only offers is now active.",
+      nova: "Enhanced point events and personal setup consultations are unlocked.",
+      celestial: "Three exclusive vouchers, year-round accessory savings and Celebration Privileges are now yours.",
+      "dark-voyager": "Your Dark Voyager black card, private invitations, product samples and bespoke-cue program are unlocked."
+    };
+    document.querySelector("[data-rank-up]")?.remove();
+    document.body.insertAdjacentHTML("beforeend", `<div class="rank-up-universe tier-${tier.id}" data-rank-up><div class="rank-stars" aria-hidden="true"></div><div class="rank-orbit orbit-one" aria-hidden="true"><i></i></div><div class="rank-orbit orbit-two" aria-hidden="true"><i></i></div><div class="rank-glow" aria-hidden="true"></div><section class="rank-up-card" role="dialog" aria-modal="true" aria-labelledby="rankUpTitle"><span class="rank-up-icon" aria-hidden="true">${tier.icon}</span><p>MEMBERSHIP UPGRADED</p><h2 id="rankUpTitle">${tier.headline}</h2><h3>${tier.name}</h3><div class="rank-up-benefit"><small>NEW PRIVILEGE</small><strong>${benefits[tier.id] || "A new level of CUEBOTS rewards is now available."}</strong></div><button class="btn" type="button" data-close-rank-up data-open-account-screen="rewards">EXPLORE MY REWARDS</button><button class="rank-up-dismiss" type="button" data-close-rank-up>CONTINUE SHOPPING</button></section></div>`);
+    const universe = document.querySelector("[data-rank-up]");
+    document.body.classList.add("rank-up-lock");
+    requestAnimationFrame(() => universe.classList.add("open"));
+  }
+
+  function closeRankUp() {
+    const universe = document.querySelector("[data-rank-up]");
+    if (!universe) return;
+    universe.classList.remove("open");
+    document.body.classList.remove("rank-up-lock");
+    setTimeout(() => universe.remove(), 420);
+  }
+
   function renderCart() {
     const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
     $$('[data-cart-count]').forEach(node => { node.textContent = count; });
     const list = $("[data-cart-items]");
     if (!list) return;
     if (!state.cart.length) list.innerHTML = `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a cue, shaft or accessory to start your setup.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">START SHOPPING</a></div>`;
-    else list.innerHTML = state.cart.map(item => { const product = cartItemProduct(item.id); return product ? `<article class="cart-item">${image(product.image, product.name)}<div><strong>${product.name}</strong><span>${money(product.price)} × ${item.qty}</span></div><button class="icon-btn" type="button" data-remove-cart="${product.id}" aria-label="Remove ${product.name}"><svg class="icon"><use href="#i-trash"></use></svg></button></article>` : ""; }).join("");
+    else {
+      const toolbar = state.cart.length >= 2 ? '<div class="cart-list-toolbar"><button class="cart-remove-all" type="button" data-remove-all-cart>Remove all selected</button></div>' : "";
+      list.innerHTML = toolbar + state.cart.map(item => {
+        const product = cartItemProduct(item.id);
+        if (!product) return "";
+        const sku = item.sku || cartSku(product.id);
+        return `<article class="cart-item">${image(product.image, product.name)}<div class="cart-item-main"><strong>${product.name}</strong><span class="cart-item-option">${cartVariant(item, product)}</span><span class="cart-item-option">SKU: ${sku}</span><span class="cart-item-price">${money(product.price * item.qty)}</span><div class="cart-item-controls"><div class="cart-quantity" aria-label="Quantity for ${product.name}"><button type="button" data-cart-qty="-1" data-cart-id="${product.id}" aria-label="Decrease ${product.name} quantity">−</button><output aria-label="Quantity">${item.qty}</output><button type="button" data-cart-qty="1" data-cart-id="${product.id}" aria-label="Increase ${product.name} quantity">+</button></div><button class="cart-remove-item" type="button" data-remove-cart="${product.id}" aria-label="Remove ${product.name}"><svg class="icon"><use href="#i-trash"></use></svg></button></div></div></article>`;
+      }).join("");
+    }
     const total = state.cart.reduce((sum, item) => { const product = cartItemProduct(item.id); return sum + (product ? product.price * item.qty : 0); }, 0);
     $("[data-cart-subtotal]").textContent = money(total);
+    const shipping = $("[data-shipping-reminder]");
+    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - total);
+    shipping.textContent = count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping.";
+    shipping.classList.toggle("unlocked", count > 0 && remaining === 0);
     $("[data-checkout]").disabled = !state.cart.length;
   }
 
@@ -326,7 +485,7 @@
     if (!product) return;
     const found = state.cart.find(item => item.id === id);
     if (found) found.qty += quantity;
-    else state.cart.push({ id, qty: quantity });
+    else state.cart.push({ id, qty: quantity, name: product.name, price: product.price, image: assetPath(product.image), sku: cartSku(id), variant: cartVariant({}, product) });
     save();
     renderCart();
     showToast(`${product.name} added to your cart.`);
@@ -357,48 +516,10 @@
     if (restore && state.lastFocus?.focus) state.lastFocus.focus();
   }
 
-  function hasEmailSignup() {
-    try { return localStorage.getItem("cuebotsEmailSubmitted") === "true"; }
-    catch (error) { return false; }
-  }
-
-  function openEmailPopup(force = false) {
-    const popup = $("[data-email-popup]");
-    if (!popup || (!force && hasEmailSignup())) return;
-    popup.classList.add("open");
-    popup.setAttribute("aria-hidden", "false");
-    $("[data-overlay]")?.classList.add("open");
-    document.body.classList.add("lock-scroll");
-    setTimeout(() => $("input", popup)?.focus(), 180);
-  }
-
-  function closeEmailPopup() {
-    const popup = $("[data-email-popup]");
-    if (!popup) return;
-    popup.classList.remove("open");
-    popup.setAttribute("aria-hidden", "true");
-    if (!$('.mobile-drawer.open,.search-dialog.open,.cart-drawer.open,.quick-modal.open,.account-modal.open')) {
-      $("[data-overlay]")?.classList.remove("open");
-      document.body.classList.remove("lock-scroll");
-    }
-    try { sessionStorage.setItem("cuebotsEmailDismissed", "true"); }
-    catch (error) { /* Session storage may be unavailable in private mode. */ }
-  }
-
-  function scheduleEmailPopup(delay = 15000) {
-    if (PAGE !== "gloves" || hasEmailSignup()) return;
-    try { if (sessionStorage.getItem("cuebotsEmailDismissed") === "true") return; }
-    catch (error) { /* Continue without dismissal persistence. */ }
-    clearTimeout(scheduleEmailPopup.timer);
-    scheduleEmailPopup.timer = setTimeout(() => {
-      if ($(".mobile-drawer.open,.search-dialog.open,.cart-drawer.open,.quick-modal.open,.account-modal.open")) scheduleEmailPopup(5000);
-      else openEmailPopup();
-    }, delay);
-  }
-
   function openQuick(id, opener) {
     const product = cartItemProduct(id);
     if (!product) return;
+    rememberProduct(product.id);
     $("[data-quick-body]").innerHTML = `<div class="quick-grid">${image(product.image, product.name, true)}<div class="quick-copy"><p class="eyebrow">CUEBOTS PERFORMANCE EQUIPMENT</p><h3>${product.name}</h3><p>${product.copy}</p><p class="price">${money(product.price)} <del>${money(product.oldPrice)}</del></p><button class="btn" type="button" data-add-cart="${product.id}">ADD TO CART</button><a class="text-link" href="${detailUrl(product)}">VIEW FULL DETAILS →</a></div></div>`;
     openSurface($("[data-quick-modal]"), opener);
   }
@@ -441,7 +562,12 @@
   function updateSearch(query) {
     const value = normalizeSearch(query);
     const resultRoot = $("[data-search-results]");
-    if (!value) { resultRoot.innerHTML = ""; return; }
+    if (!value) {
+      const activityIds = [...safeRead("cuebotsRecentlyViewed", []), ...state.cart.map(item => item.id), ...Object.keys(state.wishlist).filter(id => state.wishlist[id])];
+      const recommendations = [...activityIds.map(id => PRODUCTS.find(product => product.id === id)).filter(Boolean), ...PRODUCTS].filter((item, index, items) => items.findIndex(candidate => candidate.id === item.id) === index).slice(0, 4);
+      resultRoot.innerHTML = `<div class="search-discovery"><a class="search-promo" href="${path("pages/collection-first-carbon-cue.html")}"><img src="${path("assets/images/collections/hero-first-carbon-cue-collection-desktop-01.webp")}" width="1200" height="420" alt="" loading="lazy" decoding="async"><span><small>PLAYER-READY BUNDLE</small><strong>Start with a complete carbon setup</strong><b>SHOP THE SETUP →</b></span></a><section class="search-suggestions"><div class="search-suggestions-head"><h3>${activityIds.length ? "BASED ON YOUR ACTIVITY" : "YOU MAY ALSO LIKE"}</h3><a href="${path("pages/collection-pool-cues.html")}">VIEW ALL →</a></div><div class="search-suggestion-row">${recommendations.map(product => `<a href="${detailUrl(product)}" class="search-suggestion-card"><img src="${assetPath(product.image)}" width="120" height="120" alt="" loading="lazy" decoding="async"><span><strong>${product.name}</strong><small>${money(product.price)}</small></span></a>`).join("")}</div></section></div>`;
+      return;
+    }
     const results = PRODUCTS.map(product => ({ product, score: searchRelevance(product, value) }))
       .filter(item => item.score > 0)
       .sort((a, b) => b.score - a.score || a.product.name.length - b.product.name.length || a.product.name.localeCompare(b.product.name))
@@ -451,10 +577,62 @@
       : '<p class="search-empty">No matching products found.</p>';
   }
 
+  function setAccountMode(mode = "signin") {
+    const signup = mode === "signup";
+    $("[data-account-title]").textContent = signup ? "Create your account" : "Account sign in";
+    $("[data-account-intro]").textContent = signup ? "Save equipment, track orders and receive more relevant recommendations." : "Enter your account details to continue.";
+    $("[data-account-submit]").textContent = signup ? "CREATE ACCOUNT" : "SIGN IN";
+    const password = $("[data-account-password]");
+    password.autocomplete = signup ? "new-password" : "current-password";
+    const switcher = $(".account-mode-switch");
+    switcher.dataset.accountMode = signup ? "signin" : "signup";
+    switcher.textContent = signup ? "Already have an account? Sign in" : "New to CUEBOTS? Create an account";
+    $("[data-account-status]").textContent = "";
+  }
+
+  function wireMegaMenus() {
+    const items = $$(".desktop-nav .nav-item.has-dropdown");
+    const closeItem = item => {
+      item.classList.remove("is-mega-open");
+      $("[data-mega-trigger]", item)?.setAttribute("aria-expanded", "false");
+    };
+    const openItem = item => {
+      if (!matchMedia("(min-width: 1181px)").matches) return;
+      items.forEach(other => { if (other !== item) closeItem(other); });
+      item.classList.add("is-mega-open");
+      $("[data-mega-trigger]", item)?.setAttribute("aria-expanded", "true");
+    };
+    items.forEach(item => {
+      const trigger = $("[data-mega-trigger]", item);
+      const menu = $(".mega-menu", item);
+      const tabs = $$("[data-mega-panel-index]", item);
+      const panels = $$("[data-mega-panel]", item);
+      const selectPanel = index => {
+        tabs.forEach((tab, tabIndex) => { const selected = tabIndex === index; tab.classList.toggle("active", selected); tab.setAttribute("aria-selected", String(selected)); });
+        panels.forEach((panel, panelIndex) => { const selected = panelIndex === index; panel.classList.toggle("active", selected); panel.hidden = !selected; });
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("mouseenter", () => selectPanel(index));
+        tab.addEventListener("focus", () => selectPanel(index));
+        tab.addEventListener("click", () => selectPanel(index));
+      });
+      item.addEventListener("mouseenter", () => openItem(item));
+      item.addEventListener("mouseleave", () => closeItem(item));
+      item.addEventListener("focusin", () => openItem(item));
+      item.addEventListener("focusout", () => requestAnimationFrame(() => { if (!item.contains(document.activeElement)) closeItem(item); }));
+      trigger.addEventListener("keydown", event => {
+        if (event.key === "ArrowDown") { event.preventDefault(); openItem(item); $("a,button", menu)?.focus(); }
+        if (event.key === "Escape") { event.preventDefault(); closeItem(item); }
+      });
+      menu.addEventListener("keydown", event => { if (event.key === "Escape") { event.preventDefault(); closeItem(item); trigger.focus(); } });
+    });
+    document.addEventListener("pointerdown", event => { if (!event.target.closest(".desktop-nav")) items.forEach(closeItem); });
+  }
+
   renderSharedChrome();
+  wireMegaMenus();
   renderPage();
   renderCart();
-  scheduleEmailPopup();
   const scrollToHashTarget = () => {
     if (!location.hash) return;
     const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
@@ -468,13 +646,23 @@
     if (!target) return;
     if (target.matches("[data-open-menu]")) openSurface($(".mobile-drawer"), target);
     if (target.matches("[data-open-search]")) { updateSearch(""); openSurface($("[data-search-dialog]"), target); }
-    if (target.matches("[data-open-account]")) openSurface($("[data-account-modal]"), target);
+    if (target.matches("[data-account-mode]")) setAccountMode(target.dataset.accountMode);
+    if (target.matches("[data-open-account]")) { setAccountMode(target.dataset.accountMode || "signin"); openSurface($("[data-account-modal]"), target); }
     if (target.matches("[data-open-cart]")) openSurface($("[data-cart-drawer]"), target);
     if (target.matches("[data-close]")) closeSurfaces();
-    if (target.matches("[data-overlay]")) { closeSurfaces(); closeEmailPopup(); }
+    if (target.matches("[data-overlay]")) closeSurfaces();
     if (target.matches("[data-quick-product]")) openQuick(target.dataset.quickProduct, target);
     if (target.matches("[data-add-cart]")) addToCart(target.dataset.addCart, target.hasAttribute("data-use-quantity") ? state.quantity : 1);
+    if (target.matches("[data-cart-qty]")) {
+      const item = state.cart.find(entry => entry.id === target.dataset.cartId);
+      if (item) {
+        item.qty += Number(target.dataset.cartQty);
+        if (item.qty <= 0) state.cart = state.cart.filter(entry => entry !== item);
+        save(); renderCart();
+      }
+    }
     if (target.matches("[data-remove-cart]")) { state.cart = state.cart.filter(item => item.id !== target.dataset.removeCart); save(); renderCart(); }
+    if (target.matches("[data-remove-all-cart]")) { state.cart = []; save(); renderCart(); showToast("Selected items removed from your cart."); }
     if (target.matches("[data-wishlist]")) { const id = target.dataset.wishlist; state.wishlist[id] = !state.wishlist[id]; target.classList.toggle("active", state.wishlist[id]); target.setAttribute("aria-pressed", String(state.wishlist[id])); save(); showToast(state.wishlist[id] ? "Saved to your wishlist." : "Removed from your wishlist."); }
     if (target.matches("[data-filter]")) { state.filter = target.dataset.filter; $$('[data-filter]').forEach(button => button.classList.toggle("active", button === target)); renderCatalog(); }
     if (target.matches("[data-qty]")) { state.quantity = Math.max(1, Math.min(9, state.quantity + Number(target.dataset.qty))); $("[data-quantity]").textContent = state.quantity; }
@@ -503,8 +691,6 @@
       target.setAttribute("aria-expanded", String(!expanded));
       $("b", target).textContent = expanded ? "+" : "−";
     }
-    if (target.matches("[data-open-email]")) openEmailPopup(true);
-    if (target.matches("[data-close-email]")) closeEmailPopup();
   });
 
   document.addEventListener("input", event => {
@@ -517,21 +703,45 @@
     if (event.target.matches("[data-glove-size]")) { state.gloveSize = event.target.value; renderGloveProducts(); }
     if (event.target.matches("[data-glove-sort]")) { state.gloveSort = event.target.value; renderGloveProducts(); }
   });
+  document.addEventListener("click", event => {
+    const editButton = event.target.closest("[data-edit-checkout]");
+    if (editButton) {
+      const checkoutForm = editButton.closest("[data-checkout-form]");
+      if (checkoutForm) editCheckout(checkoutForm);
+    }
+    if (event.target.closest("[data-close-rank-up]")) closeRankUp();
+  });
   document.addEventListener("submit", event => {
     if (event.target.matches("[data-newsletter]")) { event.preventDefault(); $("[data-newsletter-status]").textContent = "Thank you — your player updates are on the way."; event.target.reset(); }
     if (event.target.matches("[data-account-form]")) { event.preventDefault(); $("[data-account-status]").textContent = "Demo sign-in received. Connect this form to your customer platform when ready."; }
     if (event.target.matches("[data-contact-form]")) { event.preventDefault(); $("[data-contact-status]").textContent = "Request received. Support will respond by email in this demo flow."; event.target.reset(); }
-    if (event.target.matches("[data-checkout-form]")) { event.preventDefault(); state.cart = []; save(); $("[data-checkout-status]").textContent = "Demo order placed successfully. No payment was processed."; event.target.querySelector("button[type=submit]").disabled = true; renderCart(); }
-    if (event.target.matches("[data-email-capture]")) {
+    if (event.target.matches("[data-checkout-form]")) {
       event.preventDefault();
-      const email = new FormData(event.target).get("email");
-      if (!String(email || "").includes("@")) { $("[data-email-capture-status]").textContent = "Please enter a valid email address."; return; }
-      try { localStorage.setItem("cuebotsEmailSubmitted", "true"); }
-      catch (error) { /* The successful UI does not depend on storage. */ }
-      $("[data-email-capture-status]").textContent = "You're in — your 10% welcome offer is ready.";
-      event.target.reset();
-      setTimeout(closeEmailPopup, 1300);
+      const checkoutForm = event.target;
+      if (checkoutForm.dataset.checkoutStage !== "review") {
+        const invalidField = [...checkoutForm.querySelectorAll("[data-checkout-details] [required]")]
+          .find(field => !field.checkValidity());
+        if (invalidField) {
+          invalidField.reportValidity();
+          return;
+        }
+        showCheckoutReview(checkoutForm);
+        return;
+      }
+      const result = recordDemoOrder(checkoutShipping(checkoutForm));
+      if (!result) {
+        $("[data-checkout-status]").textContent = "Add a product before placing an order.";
+        return;
+      }
+      state.cart = [];
+      save();
+      document.querySelector("[data-checkout-step='review']")?.classList.add("complete");
+      document.querySelector("[data-checkout-step='complete']")?.classList.add("active");
+      checkoutForm.dataset.checkoutStage = "complete";
+      checkoutForm.innerHTML = `<div class="checkout-complete"><span aria-hidden="true">✓</span><p class="eyebrow">ORDER CONFIRMED</p><h2>Thank you. Your order is placed.</h2><p>Order <strong>${result.order.id}</strong> has been confirmed for <strong>${money(result.order.total)}</strong>. A confirmation summary has been prepared for ${result.order.shipping.email}.</p><div><a class="btn" href="${path("pages/collection-pool-cues.html")}">CONTINUE SHOPPING</a><button class="btn btn-secondary" type="button" data-open-account-screen="orders">VIEW ORDER HISTORY</button></div><small>This is a demo checkout. No payment was processed.</small></div>`;
+      renderCart();
+      if (result.rankUp) setTimeout(() => showRankUpCelebration(result.rankUp), 420);
     }
   });
-  document.addEventListener("keydown", event => { if (event.key === "Escape") { closeSurfaces(); closeEmailPopup(); } });
+  document.addEventListener("keydown", event => { if (event.key === "Escape") closeSurfaces(); });
 })();
