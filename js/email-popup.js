@@ -12,7 +12,9 @@
     submittedEmail: "cuebotsEmailAddress"
   };
   const FIRST_DELAY = 15000;
-  const REMINDERS = [45000, 90000];
+  const REMINDERS = [10 * 60 * 1000, 30 * 60 * 1000];
+  const SURFACE_RECHECK_DELAY = 2 * 60 * 1000;
+  const CHECKOUT_RECHECK_DELAY = 5 * 60 * 1000;
   let timer = 0;
   let thankTimer = 0;
   let mode = "offer";
@@ -79,8 +81,25 @@
     </div>`;
   }
 
-  function anotherSurfaceIsOpen() {
-    return Boolean(document.querySelector(".search-dialog.open,.quick-modal.open,.account-modal.open,.benefit-modal.open,.cart-drawer.open,.mobile-drawer.open"));
+  function currentSuppressionDelay() {
+    const pathname = location.pathname.toLowerCase();
+    if (pathname.includes("checkout")) return CHECKOUT_RECHECK_DELAY;
+    if (document.querySelector("[data-checkout-form],.checkout-form-modern,.checkout-summary")) return CHECKOUT_RECHECK_DELAY;
+    if (document.querySelector(".cart-drawer.open,.cart-recovery-modal.open,[data-cart-recovery-modal].open")) return SURFACE_RECHECK_DELAY;
+    if (document.querySelector(".account-modal.open,[data-account-screen].open,.account-screen.open")) return SURFACE_RECHECK_DELAY;
+    if (document.querySelector(".search-dialog.open,.quick-modal.open,.benefit-modal.open,.mobile-drawer.open,.rank-up-universe.open")) return SURFACE_RECHECK_DELAY;
+    if (document.body.classList.contains("lock-scroll") || document.body.classList.contains("rank-up-lock")) return SURFACE_RECHECK_DELAY;
+    return 0;
+  }
+
+  function shouldStayQuiet() {
+    return document.hidden || currentSuppressionDelay() > 0;
+  }
+
+  function postponeQuietly(delay) {
+    const nextAt = Date.now() + delay;
+    writeSession(KEYS.nextAt, nextAt);
+    schedule(delay);
   }
 
   function openVisual() {
@@ -105,8 +124,10 @@
 
   function showOffer(force = false) {
     if (isSubmitted()) return;
-    if (!force && (readSession(KEYS.stopped) === "true" || document.hidden || anotherSurfaceIsOpen())) {
-      schedule(1000);
+    if (!force && readSession(KEYS.stopped) === "true") return;
+    const quietDelay = currentSuppressionDelay();
+    if (!force && (document.hidden || quietDelay)) {
+      postponeQuietly(quietDelay || SURFACE_RECHECK_DELAY);
       return;
     }
     mode = "offer";
@@ -145,7 +166,11 @@
 
   function tryShowDue() {
     if (isSubmitted() || readSession(KEYS.stopped) === "true") return;
-    if (document.hidden || anotherSurfaceIsOpen()) { schedule(1000); return; }
+    const quietDelay = currentSuppressionDelay();
+    if (document.hidden || quietDelay) {
+      postponeQuietly(quietDelay || SURFACE_RECHECK_DELAY);
+      return;
+    }
     showOffer();
   }
 
@@ -180,6 +205,10 @@
       return;
     }
     if (event.target.closest("[data-global-email-close]") || event.target.matches("[data-global-email-overlay]")) requestClose();
+    if (shouldStayQuiet() && !event.target.closest("[data-global-email-popup]")) {
+      if (document.querySelector("[data-global-email-popup].open")) closeVisual();
+      postponeQuietly(currentSuppressionDelay() || SURFACE_RECHECK_DELAY);
+    }
   });
 
   document.addEventListener("submit", event => {

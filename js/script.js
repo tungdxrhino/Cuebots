@@ -627,6 +627,13 @@ function wireSwipe(element, onLeft, onRight, onInteract) {
 }
 
 const FREE_SHIPPING_THRESHOLD = 99;
+const PUBLIC_CART_PROMO = {
+  code: "CUEBOTS10",
+  rate: 0.1,
+  title: "10% preferred pricing",
+  note: "Automatically applied while the public web offer is active."
+};
+let suppressCartRecovery = false;
 
 function cartSku(id) {
   return `CB-${String(id || "ITEM").replace(/[^a-z0-9]+/gi, "-").toUpperCase()}`;
@@ -643,13 +650,48 @@ function cartVariant(item, product = {}) {
   return "Standard product configuration";
 }
 
+function cartSubtotal() {
+  return state.cart.reduce((total, item) => total + (Number(item.price ?? findProduct(item.id)?.price) || 0) * item.qty, 0);
+}
+
+function cartDiscount(subtotal = cartSubtotal()) {
+  return subtotal > 0 ? subtotal * PUBLIC_CART_PROMO.rate : 0;
+}
+
+function cartTotal(subtotal = cartSubtotal()) {
+  return Math.max(0, subtotal - cartDiscount(subtotal));
+}
+
+function cartRecoveryAllowed() {
+  try { return !sessionStorage.getItem("cuebotsCartRecoveryDismissed"); }
+  catch (error) { return true; }
+}
+
+function dismissCartRecovery() {
+  try { sessionStorage.setItem("cuebotsCartRecoveryDismissed", "1"); }
+  catch (error) { /* Non-critical preference. */ }
+}
+
+function showCartRecovery(delay = 0) {
+  if (!state.cart.length || !cartRecoveryAllowed()) return;
+  const modal = $("#cartRecoveryModal");
+  if (!modal) return;
+  const subtotal = cartSubtotal();
+  const discount = cartDiscount(subtotal);
+  $("[data-cart-recovery-offer]", modal).innerHTML = `<span>${PUBLIC_CART_PROMO.code}</span><strong>${money(discount)} saved today</strong><small>${money(cartTotal(subtotal))} reserved total</small>`;
+  clearTimeout(showCartRecovery.timer);
+  showCartRecovery.timer = setTimeout(() => openSurface(modal), delay);
+}
+
 function renderCart() {
   const body = $("[data-cart-items]");
   if (!state.cart.length) {
     body.innerHTML = `<div class="empty-state"><svg class="icon" aria-hidden="true"><use href="#i-cart"></use></svg><p>Your cart is empty.</p><a class="btn" href="${ROUTES.cues}">SHOP CUES</a></div>`;
   } else {
     const toolbar = state.cart.length >= 2 ? '<div class="cart-list-toolbar"><button class="cart-remove-all" type="button" data-remove-all-cart>Remove all selected</button></div>' : "";
-    body.innerHTML = toolbar + state.cart.map(item => {
+    const subtotal = cartSubtotal();
+    const promoBanner = `<a class="cart-promo-hero" href="pages/collection-first-carbon-cue.html"><img src="assets/images/collections/hero-first-carbon-cue-collection-desktop-01.webp" width="640" height="260" alt="" loading="lazy" decoding="async"><span><small>ACTIVE WEB OFFER</small><strong>${PUBLIC_CART_PROMO.title}</strong><em>${PUBLIC_CART_PROMO.code} applied automatically</em></span></a><div class="cart-conversion-grid"><a href="pages/collection-gloves.html"><strong>Add a smoother bridge</strong><span>Pool gloves from ${money(12)} →</span></a><a href="pages/blog-how-to-choose-the-right-shaft.html"><strong>Still comparing?</strong><span>Read the shaft guide →</span></a></div>`;
+    body.innerHTML = promoBanner + toolbar + state.cart.map(item => {
       const product = findProduct(item.id) || {};
       const name = item.name || product.name || product.title || "CUEBOTS product";
       const price = Number(item.price ?? product.price) || 0;
@@ -659,13 +701,15 @@ function renderCart() {
     }).join("");
   }
   const count = state.cart.reduce((total, item) => total + item.qty, 0);
-  const subtotal = state.cart.reduce((total, item) => total + (Number(item.price ?? findProduct(item.id)?.price) || 0) * item.qty, 0);
+  const subtotal = cartSubtotal();
+  const discount = cartDiscount(subtotal);
+  const total = cartTotal(subtotal);
   $("[data-cart-count]").textContent = count;
-  $("[data-cart-subtotal]").textContent = money(subtotal);
-  const shipping = $("[data-shipping-reminder]");
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-  shipping.textContent = count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping.";
-  shipping.classList.toggle("unlocked", count > 0 && remaining === 0);
+  const summary = $("[data-cart-summary]");
+  if (summary) {
+    summary.innerHTML = `<p class="shipping-reminder${count > 0 && remaining === 0 ? " unlocked" : ""}" data-shipping-reminder>${count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping."}</p>${count ? `<div class="cart-auto-discount"><span><small>Auto-applied public code</small><strong>${PUBLIC_CART_PROMO.code}</strong></span><b>-${money(discount)}</b></div><div class="subtotal"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="cart-total-row"><span>Estimated total</span><strong data-cart-subtotal>${money(total)}</strong></div>` : `<div class="subtotal"><span>Subtotal</span><strong data-cart-subtotal>${money(0)}</strong></div>`}`;
+  }
   $("[data-checkout]").disabled = count === 0;
 }
 
@@ -785,7 +829,7 @@ function surfaceTrigger(surface) {
 }
 
 function activeSurface() {
-  return $(".benefit-modal.open") || $(".account-modal.open") || $(".quick-modal.open") || $(".search-dialog.open") || $(".cart-drawer.open") || $(".mobile-drawer.open");
+  return $(".cart-recovery-modal.open") || $(".benefit-modal.open") || $(".account-modal.open") || $(".quick-modal.open") || $(".search-dialog.open") || $(".cart-drawer.open") || $(".mobile-drawer.open");
 }
 
 function openSurface(surface, opener) {
@@ -810,6 +854,7 @@ function openSurface(surface, opener) {
 
 function closeSurface(surface, restore = true) {
   if (!surface) return;
+  const closedCartWithItems = surface.matches(".cart-drawer") && surface.classList.contains("open") && state.cart.length > 0 && !suppressCartRecovery;
   const restoreTarget = state.lastFocus;
   if (surface.matches(".benefit-modal")) {
     const video = $("[data-benefit-video]", surface);
@@ -829,6 +874,7 @@ function closeSurface(surface, restore = true) {
     if (isElementVisible(restoreTarget)) restoreTarget.focus();
     else surfaceTrigger(surface)?.focus();
   });
+  if (closedCartWithItems) showCartRecovery(180);
 }
 
 function closeAllSurfaces() {
@@ -989,6 +1035,8 @@ document.addEventListener("click", event => {
   if (target.matches("[data-close-search]")) closeSurface($("#searchDialog"));
   if (target.matches("[data-open-cart]")) openSurface($("#cartDrawer"), target);
   if (target.matches("[data-close-cart]")) closeSurface($("#cartDrawer"));
+  if (target.matches("[data-cart-recovery-later]")) { dismissCartRecovery(); closeSurface($("#cartRecoveryModal")); }
+  if (target.matches("[data-cart-recovery-checkout]")) { suppressCartRecovery = true; window.location.href = "pages/checkout.html"; }
   if (target.matches("[data-close-quick]")) closeSurface($("#quickModal"));
   if (target.matches("[data-account-mode]")) setAccountMode(target.dataset.accountMode);
   if (target.matches("[data-open-account]")) { setAccountMode(target.dataset.accountMode || "signin"); openSurface($("#accountModal"), target); }
@@ -1031,7 +1079,7 @@ document.addEventListener("click", event => {
     saveState(); renderCart(); showToast("Selected items removed from your cart.");
   }
   if (target.matches("[data-quick-product]")) openQuick(target.dataset.quickProduct, target);
-  if (target.matches("[data-checkout]")) window.location.href = "pages/checkout.html";
+  if (target.matches("[data-checkout]")) { suppressCartRecovery = true; window.location.href = "pages/checkout.html"; }
   if (target.matches("[data-review-step]")) changeReview(Number(target.dataset.reviewStep), true);
   if (target.matches("[data-review-index]")) { state.reviewIndex = Number(target.dataset.reviewIndex); updateReviews(); pauseReviewAuto(10000); }
   if (target.matches("[data-hero-index]")) changeHero(0, Number(target.dataset.heroIndex), true);

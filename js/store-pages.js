@@ -209,6 +209,15 @@
     $("[data-shared-surfaces]").innerHTML = `<div class="overlay" data-overlay></div><aside class="mobile-drawer" id="storeMobileMenu" role="dialog" aria-modal="true" aria-hidden="true"><div class="drawer-header"><h2>Menu</h2><button class="icon-btn" type="button" aria-label="Close menu" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><nav class="mobile-nav" aria-label="Mobile navigation">${mobile}</nav><button class="mobile-account-button" type="button" data-open-account><svg class="icon"><use href="#i-user"></use></svg><span>ACCOUNT SIGN IN</span></button></aside><section class="search-dialog" role="dialog" aria-modal="true" aria-hidden="true" data-search-dialog><div class="drawer-header"><h2>Search products</h2><button class="icon-btn" type="button" aria-label="Close search" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="search-input-row"><svg class="icon"><use href="#i-search"></use></svg><input type="search" placeholder="Search cues, shafts and accessories" aria-label="Search products" data-search-input><button type="button" data-clear-search>Clear</button></div><div class="search-results" data-search-results></div></section><aside class="cart-drawer" role="dialog" aria-modal="true" aria-hidden="true" data-cart-drawer><div class="drawer-header"><h2>Your cart</h2><button class="icon-btn" type="button" aria-label="Close cart" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="drawer-body" data-cart-items></div><div class="drawer-footer"><p class="shipping-reminder" data-shipping-reminder></p><div class="subtotal"><span>Subtotal</span><strong data-cart-subtotal>${money(0)}</strong></div><button class="btn" type="button" data-checkout>CHECKOUT</button><p>Secure demo checkout. No payment will be processed.</p></div></aside><section class="quick-modal" role="dialog" aria-modal="true" aria-hidden="true" data-quick-modal><div class="drawer-header"><h2>Quick view</h2><button class="icon-btn" type="button" aria-label="Close quick view" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><div class="quick-body" data-quick-body></div></section><section class="account-modal" role="dialog" aria-modal="true" aria-hidden="true" data-account-modal><div class="drawer-header"><h2 data-account-title>Account sign in</h2><button class="icon-btn" type="button" aria-label="Close account" data-close><svg class="icon"><use href="#i-x"></use></svg></button></div><form class="account-form" data-account-form><p data-account-intro>Enter your account details to continue.</p><label>Email address<input type="email" autocomplete="email" required></label><label>Password<input type="password" minlength="6" autocomplete="current-password" required data-account-password></label><button class="btn" type="submit" data-account-submit>SIGN IN</button><button class="account-mode-switch" type="button" data-account-mode="signup">New to CUEBOTS? Create an account</button><p class="form-status" data-account-status></p></form><a class="account-modal-promo" href="${path("pages/collection-first-carbon-cue.html")}"><img src="${path("assets/images/collections/thumb-first-carbon-cue-related-5x3-01.webp")}" width="600" height="360" alt="" loading="lazy"><span><small>PLAYER STARTER</small><strong>Build your first carbon setup</strong><b>EXPLORE →</b></span></a></section><div class="toast" data-toast role="status" aria-live="polite"></div>`;
   }
 
+  function enhanceCartSurfaces() {
+    const cartDrawer = $("[data-cart-drawer]");
+    const cartFooter = $("[data-cart-drawer] .drawer-footer");
+    if (cartFooter) cartFooter.innerHTML = `<div class="cart-summary-panel" data-cart-summary></div><button class="btn" type="button" data-checkout>CHECKOUT</button><p>Secure demo checkout. No payment will be processed.</p>`;
+    if (cartDrawer && !$("[data-cart-recovery-modal]")) {
+      cartDrawer.insertAdjacentHTML("afterend", `<section class="cart-recovery-modal" role="dialog" aria-modal="true" aria-hidden="true" data-cart-recovery-modal><button class="cart-recovery-close" type="button" aria-label="Close cart reminder" data-cart-recovery-later><svg class="icon"><use href="#i-x"></use></svg></button><div class="cart-recovery-media"><img src="${path("assets/images/promotions/poster-retro-ii-complete-setups-desktop-01.webp")}" width="640" height="420" alt="" loading="lazy" decoding="async"></div><div class="cart-recovery-copy"><p class="eyebrow">PRIVATE CART NOTE</p><h2>Your preferred pricing is still reserved.</h2><p>The public CUEBOTS10 offer has been applied to your setup. Free shipping progress and warranty support remain with your cart while you decide.</p><div class="cart-recovery-offer" data-cart-recovery-offer></div><div class="cart-recovery-actions"><a class="btn" href="${path("pages/checkout.html")}" data-cart-recovery-checkout>CONTINUE SECURE CHECKOUT</a><button class="btn btn-secondary" type="button" data-cart-recovery-later>KEEP IT FOR LATER</button></div></div></section>`);
+    }
+  }
+
   function stars(rating) {
     return `<span class="store-stars" aria-label="${rating} out of 5 stars">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</span>`;
   }
@@ -307,23 +316,45 @@
   function renderCheckout() {
     document.title = "Checkout | CUEBOTS";
     const items = state.cart.map(item => ({ ...item, product: cartItemProduct(item.id) })).filter(item => item.product);
-    const total = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const discount = cartDiscount(subtotal);
+    const total = Math.max(0, subtotal - discount);
     $("[data-page-content]").innerHTML = `<nav class="store-breadcrumb container" aria-label="Breadcrumb"><a href="${path("index.html")}">Home</a><span>/</span><span>Checkout</span></nav><section class="store-section"><div class="container checkout-layout"><form class="checkout-form" data-checkout-form><div><p class="eyebrow">Secure demo checkout</p><h1>Delivery details</h1><p>No payment will be processed in this prototype.</p></div><div class="checkout-fields"><label>First name<input type="text" required></label><label>Last name<input type="text" required></label><label class="full">Email<input type="email" required></label><label class="full">Address<input type="text" required></label><label>City<input type="text" required></label><label>Postal code<input type="text" required></label><label class="full">Country<select required><option>United States</option><option>Vietnam</option><option>Canada</option><option>Australia</option></select></label></div><button class="btn" type="submit"${items.length ? "" : " disabled"}>PLACE DEMO ORDER</button><p class="form-status" data-checkout-status></p></form><aside class="checkout-summary"><h2>Order summary</h2>${items.length ? items.map(item => `<div class="checkout-item">${image(item.product.image, item.product.name)}<div><strong>${item.product.name}</strong><span>Qty ${item.qty}</span></div><b>${money(item.product.price * item.qty)}</b></div>`).join("") : `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a product before checking out.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">CONTINUE SHOPPING</a></div>`}<div class="checkout-total"><span>Total</span><strong>${money(total)}</strong></div></aside></div></section>`;
   }
 
   function renderModernCheckout() {
     document.title = "Secure Checkout | CUEBOTS";
     const items = state.cart.map(item => ({ ...item, product: cartItemProduct(item.id) })).filter(item => item.product);
-    const total = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+    const discount = cartDiscount(subtotal);
+    const total = Math.max(0, subtotal - discount);
     const itemMarkup = items.length ? items.map(item => `<div class="checkout-item">${image(item.product.image, item.product.name)}<div><strong>${item.product.name}</strong><span>${cartVariant(item, item.product)} · Qty ${item.qty}</span></div><b>${money(item.product.price * item.qty)}</b></div>`).join("") : `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a product before checking out.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">CONTINUE SHOPPING</a></div>`;
     $("[data-page-content]").innerHTML = `<nav class="store-breadcrumb container" aria-label="Breadcrumb"><a href="${path("index.html")}">Home</a><span>/</span><span>Secure checkout</span></nav><section class="store-section checkout-section"><div class="container"><div class="checkout-head"><div><p class="eyebrow">SECURE DEMO CHECKOUT</p><h1>Review before you place the order.</h1><p>Enter delivery details first. You will see one final confirmation screen before the order is placed.</p></div><span>🔒 SECURE SESSION</span></div><div class="checkout-process" aria-label="Checkout progress"><div class="active" data-checkout-step="details"><span>1</span><strong>Delivery</strong><small>Address & contact</small></div><i></i><div data-checkout-step="review"><span>2</span><strong>Review</strong><small>Confirm every detail</small></div><i></i><div data-checkout-step="complete"><span>3</span><strong>Complete</strong><small>Order confirmation</small></div></div><div class="checkout-layout"><form class="checkout-form checkout-form-modern" data-checkout-form data-checkout-stage="details" novalidate><section data-checkout-details><div class="checkout-form-title"><span>1</span><div><h2>Delivery information</h2><p>Fields marked required must be completed before review.</p></div></div><div class="checkout-fields"><label>First name<input name="firstName" type="text" autocomplete="given-name" required></label><label>Last name<input name="lastName" type="text" autocomplete="family-name" required></label><label class="full">Email address<input name="email" type="email" autocomplete="email" required></label><label class="full">Street address<input name="address" type="text" autocomplete="street-address" required></label><label>City<input name="city" type="text" autocomplete="address-level2" required></label><label>Postal code<input name="postalCode" type="text" autocomplete="postal-code" required></label><label class="full">Country<select name="country" autocomplete="country-name" required><option>United States</option><option>Vietnam</option><option>Canada</option><option>Australia</option></select></label></div><fieldset class="checkout-delivery-method"><legend>Delivery method</legend><label><input name="deliveryMethod" type="radio" value="Standard tracked shipping" checked><span><strong>Standard tracked shipping</strong><small>Estimated 5–8 business days</small></span><b>FREE</b></label><label><input name="deliveryMethod" type="radio" value="Express shipping"><span><strong>Express shipping</strong><small>Estimated 2–4 business days</small></span><b>$18</b></label></fieldset><div class="checkout-payment-note"><span aria-hidden="true">✓</span><div><strong>Payment confirmation comes next</strong><p>No payment is processed in this prototype. The final screen clearly identifies the action that places the demo order.</p></div></div><button class="btn checkout-primary-action" type="submit"${items.length ? "" : " disabled"}>REVIEW ADDRESS & ORDER <span>→</span></button></section><section class="checkout-review" data-checkout-review hidden><div class="checkout-form-title"><span>2</span><div><h2>Confirm your order</h2><p>Check the delivery address and products before placing the order.</p></div></div><div class="checkout-review-card"><header><strong>Delivery address</strong><button type="button" data-edit-checkout>EDIT</button></header><p data-checkout-review-name></p><p data-checkout-review-address></p><p data-checkout-review-contact></p><p data-checkout-review-method></p></div><label class="checkout-confirm-check"><input type="checkbox" name="confirmation" required disabled><span>I confirm that the delivery address and order details are correct.</span></label><button class="btn checkout-primary-action checkout-confirm-action" type="submit">CONFIRM & PLACE ORDER · ${money(total)}</button><button class="checkout-edit-link" type="button" data-edit-checkout>← EDIT DELIVERY INFORMATION</button></section><p class="form-status checkout-status" data-checkout-status aria-live="polite"></p></form><aside class="checkout-summary"><div class="checkout-summary-head"><h2>Order summary</h2><span>${items.reduce((sum, item) => sum + item.qty, 0)} items</span></div>${itemMarkup}<div class="checkout-cost-row"><span>Subtotal</span><b>${money(total)}</b></div><div class="checkout-cost-row"><span>Standard shipping</span><b>${total >= FREE_SHIPPING_THRESHOLD ? "FREE" : "Calculated"}</b></div><div class="checkout-total"><span>Order total</span><strong>${money(total)}</strong></div><p class="checkout-assurance">Limited lifetime warranty · Easy exchange · Secure order review</p></aside></div></div></section>`;
+  }
+
+  function decorateCheckoutSummary() {
+    if (TYPE !== "checkout") return;
+    const subtotal = cartSubtotal();
+    const discount = cartDiscount(subtotal);
+    const costRows = $$(".checkout-summary .checkout-cost-row");
+    const firstCostRow = costRows[0];
+    const subtotalRow = firstCostRow?.querySelector("b");
+    if (subtotalRow) subtotalRow.textContent = money(subtotal);
+    if (firstCostRow && discount > 0 && !$(".checkout-discount-row")) firstCostRow.insertAdjacentHTML("afterend", `<div class="checkout-cost-row checkout-discount-row"><span>${PUBLIC_CART_PROMO.code} auto-applied</span><b>-${money(discount)}</b></div>`);
+    const shippingRow = $$(".checkout-summary .checkout-cost-row").find(row => row.textContent.includes("Standard shipping"));
+    const shippingValue = shippingRow?.querySelector("b");
+    if (shippingValue) shippingValue.textContent = subtotal >= FREE_SHIPPING_THRESHOLD ? "FREE" : "Calculated";
   }
 
   function renderPage() {
     if (TYPE === "collection") renderCollection();
     if (TYPE === "product") renderProduct();
     if (TYPE === "services") renderServices();
-    if (TYPE === "checkout") renderModernCheckout();
+    if (TYPE === "checkout") {
+      if (state.cart.length) markCheckoutStarted();
+      renderModernCheckout();
+    }
+    decorateCheckoutSummary();
   }
 
   function cartItemProduct(id) {
@@ -342,6 +373,14 @@
     };
   }
   const FREE_SHIPPING_THRESHOLD = 99;
+  const PUBLIC_CART_PROMO = {
+    code: "CUEBOTS10",
+    rate: 0.1,
+    title: "10% preferred pricing",
+    note: "Automatically applied while the public web offer is active."
+  };
+  let suppressCartRecovery = false;
+  let pendingRecoveryUrl = "";
 
   function cartSku(id) {
     return `CB-${String(id || "ITEM").replace(/[^a-z0-9]+/gi, "-").toUpperCase()}`;
@@ -359,6 +398,52 @@
     if (product.tags.includes("case")) return "Cue case / Standard configuration";
     if (product.tags.includes("bundle")) return "Complete bundle / Standard configuration";
     return "CUEBOTS standard configuration";
+  }
+
+  function cartSubtotal() {
+    return state.cart.reduce((sum, item) => {
+      const product = cartItemProduct(item.id);
+      return sum + (product ? product.price * item.qty : 0);
+    }, 0);
+  }
+
+  function cartDiscount(subtotal = cartSubtotal()) {
+    return subtotal > 0 ? subtotal * PUBLIC_CART_PROMO.rate : 0;
+  }
+
+  function cartTotal(subtotal = cartSubtotal()) {
+    return Math.max(0, subtotal - cartDiscount(subtotal));
+  }
+
+  function cartRecoveryAllowed() {
+    try { return !sessionStorage.getItem("cuebotsCartRecoveryDismissed"); }
+    catch (error) { return true; }
+  }
+
+  function dismissCartRecovery() {
+    try { sessionStorage.setItem("cuebotsCartRecoveryDismissed", "1"); }
+    catch (error) { /* Non-critical preference. */ }
+  }
+
+  function markCheckoutStarted() {
+    try { sessionStorage.setItem("cuebotsCheckoutStarted", "1"); }
+    catch (error) { /* Non-critical recovery hint. */ }
+  }
+
+  function checkoutStarted() {
+    try { return Boolean(sessionStorage.getItem("cuebotsCheckoutStarted")); }
+    catch (error) { return false; }
+  }
+
+  function showCartRecovery(delay = 0) {
+    if (!state.cart.length || !cartRecoveryAllowed()) return;
+    const modal = $("[data-cart-recovery-modal]");
+    if (!modal) return;
+    const subtotal = cartSubtotal();
+    const discount = cartDiscount(subtotal);
+    $("[data-cart-recovery-offer]", modal).innerHTML = `<span>${PUBLIC_CART_PROMO.code}</span><strong>${money(discount)} saved today</strong><small>${money(cartTotal(subtotal))} reserved total</small>`;
+    clearTimeout(showCartRecovery.timer);
+    showCartRecovery.timer = setTimeout(() => openSurface(modal), delay);
   }
 
   const STORE_LOYALTY_TIERS = [
@@ -417,7 +502,9 @@
       const product = cartItemProduct(item.id);
       return product ? { id: product.id, name: product.name, qty: item.qty, price: product.price } : null;
     }).filter(Boolean);
-    const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const subtotal = items.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const discount = cartDiscount(subtotal);
+    const total = Math.max(0, subtotal - discount);
     if (!items.length || total <= 0) return null;
     const previousSpend = Math.max(0, Number(safeRead("cuebotsLifetimeSpend", 0)) || 0);
     const newSpend = previousSpend + total;
@@ -426,6 +513,9 @@
     const order = {
       id: `CB-${Date.now().toString(36).toUpperCase()}`,
       placedAt: new Date().toISOString(),
+      subtotal,
+      discount,
+      promoCode: PUBLIC_CART_PROMO.code,
       total,
       items,
       shipping
@@ -473,19 +563,22 @@
     if (!state.cart.length) list.innerHTML = `<div class="cart-empty"><h3>Your cart is empty</h3><p>Add a cue, shaft or accessory to start your setup.</p><a class="btn btn-secondary" href="${path("pages/collection-pool-cues.html")}">START SHOPPING</a></div>`;
     else {
       const toolbar = state.cart.length >= 2 ? '<div class="cart-list-toolbar"><button class="cart-remove-all" type="button" data-remove-all-cart>Remove all selected</button></div>' : "";
-      list.innerHTML = toolbar + state.cart.map(item => {
+      const promoBanner = `<a class="cart-promo-hero" href="${path("pages/collection-first-carbon-cue.html")}"><img src="${path("assets/images/collections/hero-first-carbon-cue-collection-desktop-01.webp")}" width="640" height="260" alt="" loading="lazy" decoding="async"><span><small>ACTIVE WEB OFFER</small><strong>${PUBLIC_CART_PROMO.title}</strong><em>${PUBLIC_CART_PROMO.code} applied automatically</em></span></a><div class="cart-conversion-grid"><a href="${path("pages/collection-gloves.html")}"><strong>Add a smoother bridge</strong><span>Pool gloves from ${money(12)} →</span></a><a href="${path("pages/blog-how-to-choose-the-right-shaft.html")}"><strong>Still comparing?</strong><span>Read the shaft guide →</span></a></div>`;
+      list.innerHTML = promoBanner + toolbar + state.cart.map(item => {
         const product = cartItemProduct(item.id);
         if (!product) return "";
         const sku = item.sku || cartSku(product.id);
         return `<article class="cart-item">${image(product.image, product.name)}<div class="cart-item-main"><strong>${product.name}</strong><span class="cart-item-option">${cartVariant(item, product)}</span><span class="cart-item-option">SKU: ${sku}</span><span class="cart-item-price">${money(product.price * item.qty)}</span><div class="cart-item-controls"><div class="cart-quantity" aria-label="Quantity for ${product.name}"><button type="button" data-cart-qty="-1" data-cart-id="${product.id}" aria-label="Decrease ${product.name} quantity">−</button><output aria-label="Quantity">${item.qty}</output><button type="button" data-cart-qty="1" data-cart-id="${product.id}" aria-label="Increase ${product.name} quantity">+</button></div><button class="cart-remove-item" type="button" data-remove-cart="${product.id}" aria-label="Remove ${product.name}"><svg class="icon"><use href="#i-trash"></use></svg></button></div></div></article>`;
       }).join("");
     }
-    const total = state.cart.reduce((sum, item) => { const product = cartItemProduct(item.id); return sum + (product ? product.price * item.qty : 0); }, 0);
-    $("[data-cart-subtotal]").textContent = money(total);
-    const shipping = $("[data-shipping-reminder]");
-    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - total);
-    shipping.textContent = count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping.";
-    shipping.classList.toggle("unlocked", count > 0 && remaining === 0);
+    const subtotal = cartSubtotal();
+    const discount = cartDiscount(subtotal);
+    const total = cartTotal(subtotal);
+    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+    const summary = $("[data-cart-summary]");
+    if (summary) {
+      summary.innerHTML = `<p class="shipping-reminder${count > 0 && remaining === 0 ? " unlocked" : ""}" data-shipping-reminder>${count === 0 ? `Free shipping on orders over ${money(FREE_SHIPPING_THRESHOLD)}.` : remaining > 0 ? `You're ${money(remaining)} away from free shipping.` : "You've unlocked free shipping."}</p>${count ? `<div class="cart-auto-discount"><span><small>Auto-applied public code</small><strong>${PUBLIC_CART_PROMO.code}</strong></span><b>-${money(discount)}</b></div><div class="subtotal"><span>Subtotal</span><strong>${money(subtotal)}</strong></div><div class="cart-total-row"><span>Estimated total</span><strong data-cart-subtotal>${money(total)}</strong></div>` : `<div class="subtotal"><span>Subtotal</span><strong data-cart-subtotal>${money(0)}</strong></div>`}`;
+    }
     $("[data-checkout]").disabled = !state.cart.length;
   }
 
@@ -519,10 +612,12 @@
   }
 
   function closeSurfaces(restore = true) {
-    $$(".mobile-drawer,.search-dialog,.cart-drawer,.quick-modal,.account-modal").forEach(surface => { surface.classList.remove("open"); surface.setAttribute("aria-hidden", "true"); });
+    const closedCartWithItems = $(".cart-drawer.open") && state.cart.length > 0 && !suppressCartRecovery;
+    $$(".mobile-drawer,.search-dialog,.cart-drawer,.quick-modal,.account-modal,.cart-recovery-modal").forEach(surface => { surface.classList.remove("open"); surface.setAttribute("aria-hidden", "true"); });
     $("[data-overlay]")?.classList.remove("open");
     document.body.classList.remove("lock-scroll");
     if (restore && state.lastFocus?.focus) state.lastFocus.focus();
+    if (closedCartWithItems) showCartRecovery(180);
   }
 
   function openQuick(id, opener) {
@@ -639,9 +734,11 @@
   }
 
   renderSharedChrome();
+  enhanceCartSurfaces();
   wireMegaMenus();
   renderPage();
   renderCart();
+  if (TYPE !== "checkout" && checkoutStarted() && state.cart.length) showCartRecovery(700);
   const scrollToHashTarget = () => {
     if (!location.hash) return;
     const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
@@ -660,6 +757,14 @@
     if (target.matches("[data-open-cart]")) openSurface($("[data-cart-drawer]"), target);
     if (target.matches("[data-close]")) closeSurfaces();
     if (target.matches("[data-overlay]")) closeSurfaces();
+    if (target.matches("[data-cart-recovery-later]")) {
+      dismissCartRecovery();
+      const nextUrl = pendingRecoveryUrl;
+      pendingRecoveryUrl = "";
+      closeSurfaces();
+      if (nextUrl) window.location.href = nextUrl;
+    }
+    if (target.matches("[data-cart-recovery-checkout]")) { suppressCartRecovery = true; pendingRecoveryUrl = ""; markCheckoutStarted(); window.location.href = path("pages/checkout.html"); }
     if (target.matches("[data-quick-product]")) openQuick(target.dataset.quickProduct, target);
     if (target.matches("[data-add-cart]")) addToCart(target.dataset.addCart, target.hasAttribute("data-use-quantity") ? state.quantity : 1);
     if (target.matches("[data-cart-qty]")) {
@@ -675,7 +780,16 @@
     if (target.matches("[data-wishlist]")) { const id = target.dataset.wishlist; state.wishlist[id] = !state.wishlist[id]; target.classList.toggle("active", state.wishlist[id]); target.setAttribute("aria-pressed", String(state.wishlist[id])); save(); showToast(state.wishlist[id] ? "Saved to your wishlist." : "Removed from your wishlist."); }
     if (target.matches("[data-filter]")) { state.filter = target.dataset.filter; $$('[data-filter]').forEach(button => button.classList.toggle("active", button === target)); renderCatalog(); }
     if (target.matches("[data-qty]")) { state.quantity = Math.max(1, Math.min(9, state.quantity + Number(target.dataset.qty))); $("[data-quantity]").textContent = state.quantity; }
-    if (target.matches("[data-checkout]")) window.location.href = path("pages/checkout.html");
+    if (TYPE === "checkout" && target.matches("a[href]") && state.cart.length && !target.closest(".cart-recovery-modal") && !target.closest(".account-modal")) {
+      const href = target.getAttribute("href");
+      if (href && !href.startsWith("#") && cartRecoveryAllowed()) {
+        event.preventDefault();
+        pendingRecoveryUrl = target.href;
+        showCartRecovery(0);
+        return;
+      }
+    }
+    if (target.matches("[data-checkout]")) { suppressCartRecovery = true; markCheckoutStarted(); window.location.href = path("pages/checkout.html"); }
     if (target.matches("[data-clear-search]")) { const input = $("[data-search-input]"); input.value = ""; updateSearch(""); input.focus(); }
     if (target.matches("[data-glove-hand]")) { state.gloveHand = target.dataset.gloveHand; renderGloveProducts(); }
     if (target.matches("[data-glove-clear]")) {
@@ -743,6 +857,10 @@
         return;
       }
       state.cart = [];
+      try {
+        sessionStorage.removeItem("cuebotsCheckoutStarted");
+        sessionStorage.removeItem("cuebotsCartRecoveryDismissed");
+      } catch (error) { /* Session recovery state is optional. */ }
       save();
       document.querySelector("[data-checkout-step='review']")?.classList.add("complete");
       document.querySelector("[data-checkout-step='complete']")?.classList.add("active");

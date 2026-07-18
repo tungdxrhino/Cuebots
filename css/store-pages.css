@@ -199,6 +199,8 @@
 .checkout-summary-head span { color: var(--muted); font-size: .66rem; font-weight: 800; }
 .checkout-cost-row { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding: 9px 0; color: #657384; font-size: .72rem; }
 .checkout-cost-row b { color: var(--navy); }
+.checkout-discount-row { color: #17633a; }
+.checkout-discount-row b { color: #17633a; }
 .checkout-assurance { margin: 14px 0 0; color: #657384; font-size: .62rem; line-height: 1.45; text-align: center; }
 .checkout-complete { min-height: 440px; display: grid; place-items: center; align-content: center; text-align: center; }
 .checkout-complete > span { width: 70px; height: 70px; display: grid; place-items: center; margin-bottom: 15px; border-radius: 50%; background: #e3f4ec; color: #188259; font-size: 1.7rem; font-weight: 900; }
