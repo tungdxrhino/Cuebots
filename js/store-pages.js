@@ -159,8 +159,14 @@
     lastFocus: null
   };
   const formatters = Object.fromEntries(Object.entries(CURRENCY).map(([key, item]) => [key, new Intl.NumberFormat(item.locale, { style: "currency", currency: item.currency, minimumFractionDigits: 0, maximumFractionDigits: 0 })]));
+  const roundDisplayMoney = value => {
+    const amount = Math.round(Math.max(0, Number(value) || 0));
+    if (amount < 1000) return amount;
+    const step = Math.pow(10, Math.max(0, String(amount).length - 3));
+    return Math.floor(amount / step) * step;
+  };
   const money = value => {
-    const roundedValue = Math.round(value * CURRENCY[state.currency].rate);
+    const roundedValue = roundDisplayMoney(value * CURRENCY[state.currency].rate);
     return formatters[state.currency].format(roundedValue);
   };
   const assetPath = file => path(`assets/images/${file}`);

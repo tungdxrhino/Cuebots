@@ -279,10 +279,17 @@ function saveState() {
 
 const MONEY_FORMATTERS = Object.fromEntries(Object.entries(CURRENCY).map(([key, config]) => [key, new Intl.NumberFormat(config.locale, { style: "currency", currency: config.currency, minimumFractionDigits: 0, maximumFractionDigits: 0 })]));
 
+function roundDisplayMoney(value) {
+  const amount = Math.round(Math.max(0, Number(value) || 0));
+  if (amount < 1000) return amount;
+  const step = Math.pow(10, Math.max(0, String(amount).length - 3));
+  return Math.floor(amount / step) * step;
+}
+
 function money(value) {
   const key = CURRENCY[state.currency] ? state.currency : "USD";
   const config = CURRENCY[key];
-  const roundedValue = Math.round(value * config.rate);
+  const roundedValue = roundDisplayMoney(value * config.rate);
   return MONEY_FORMATTERS[key].format(roundedValue);
 }
 

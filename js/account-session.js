@@ -74,12 +74,19 @@
     return name ? name.replace(/\b\w/g, letter => letter.toUpperCase()) : "Player";
   };
 
+  const roundDisplayMoney = value => {
+    const amount = Math.round(Math.max(0, Number(value) || 0));
+    if (amount < 1000) return amount;
+    const step = Math.pow(10, Math.max(0, String(amount).length - 3));
+    return Math.floor(amount / step) * step;
+  };
+
   const formatUSD = value => new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(Math.round(Number(value) || 0));
+  }).format(roundDisplayMoney(value));
 
   const loyaltyState = () => {
     const lifetimeSpend = Math.max(0, Number(safeReadLocal(LIFETIME_SPEND_KEY, 0)) || 0);
