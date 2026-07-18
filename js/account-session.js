@@ -77,8 +77,9 @@
   const formatUSD = value => new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
+    minimumFractionDigits: 0,
     maximumFractionDigits: 0
-  }).format(Number(value) || 0);
+  }).format(Math.round(Number(value) || 0));
 
   const loyaltyState = () => {
     const lifetimeSpend = Math.max(0, Number(safeReadLocal(LIFETIME_SPEND_KEY, 0)) || 0);

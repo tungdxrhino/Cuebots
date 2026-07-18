@@ -158,8 +158,11 @@
     quantity: 1,
     lastFocus: null
   };
-  const formatters = Object.fromEntries(Object.entries(CURRENCY).map(([key, item]) => [key, new Intl.NumberFormat(item.locale, { style: "currency", currency: item.currency, maximumFractionDigits: 0 })]));
-  const money = value => formatters[state.currency].format(Math.round(value * CURRENCY[state.currency].rate));
+  const formatters = Object.fromEntries(Object.entries(CURRENCY).map(([key, item]) => [key, new Intl.NumberFormat(item.locale, { style: "currency", currency: item.currency, minimumFractionDigits: 0, maximumFractionDigits: 0 })]));
+  const money = value => {
+    const roundedValue = Math.round(value * CURRENCY[state.currency].rate);
+    return formatters[state.currency].format(roundedValue);
+  };
   const assetPath = file => path(`assets/images/${file}`);
   const image = (file, alt, eager = false) => `<span class="image-shell"><img src="${assetPath(file)}" width="1200" height="1200" alt="${alt}" loading="${eager ? "eager" : "lazy"}" decoding="async"></span>`;
   const responsiveImage = (desktop, mobile, alt, eager = false) => `<span class="image-shell"><picture><source media="(max-width: 767px)" srcset="${assetPath(mobile)}"><img src="${assetPath(desktop)}" width="1920" height="640" alt="${alt}" loading="${eager ? "eager" : "lazy"}" decoding="async"></picture></span>`;
