@@ -122,7 +122,7 @@ const MEGA_PROMOTIONS = {
 
 const pageData = {
   trust: [
-    { icon: "i-star", label: "4.4/5 from 2,000+ players" },
+    { icon: "i-star", label: "Player-focused equipment guidance" },
     { icon: "i-box", label: "Free shipping over $99" },
     { icon: "i-shield", label: "Limited lifetime warranty" },
     { icon: "i-exchange", label: "Easy exchange" }
@@ -628,10 +628,10 @@ function wireSwipe(element, onLeft, onRight, onInteract) {
 
 const FREE_SHIPPING_THRESHOLD = 99;
 const PUBLIC_CART_PROMO = {
-  code: "CUEBOTS10",
-  rate: 0.1,
-  title: "10% preferred pricing",
-  note: "Automatically applied while the public web offer is active."
+  code: "",
+  rate: 0,
+  title: "Compatibility guidance",
+  note: "No public discount is applied unless verified promotion data is active."
 };
 let suppressCartRecovery = false;
 
@@ -678,7 +678,7 @@ function showCartRecovery(delay = 0) {
   if (!modal) return;
   const subtotal = cartSubtotal();
   const discount = cartDiscount(subtotal);
-  $("[data-cart-recovery-offer]", modal).innerHTML = `<span>${PUBLIC_CART_PROMO.code}</span><strong>${money(discount)} saved today</strong><small>${money(cartTotal(subtotal))} reserved total</small>`;
+  $("[data-cart-recovery-offer]", modal).innerHTML = `<span>ORDER REVIEW</span><strong>${money(cartTotal(subtotal))} cart total</strong><small>Compatibility and shipping details remain available.</small>`;
   clearTimeout(showCartRecovery.timer);
   showCartRecovery.timer = setTimeout(() => openSurface(modal), delay);
 }

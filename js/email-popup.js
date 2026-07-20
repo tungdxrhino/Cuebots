@@ -58,14 +58,14 @@
   }
 
   function offerMarkup() {
-    return `<p class="global-email-eyebrow">PLAYER-ONLY OFFERS</p>
-      <h2 id="globalEmailTitle">Get 10% off your first order.</h2>
-      <p>Join for equipment tips, new releases, fit advice and early access to bundle offers.</p>
+    return `<p class="global-email-eyebrow">CUEBOTS PLAYER NOTES</p>
+      <h2 id="globalEmailTitle">Choose equipment with more confidence.</h2>
+      <p>Join for product guides, new releases, compatibility advice and verified store updates.</p>
       <form class="global-email-form" data-global-email-form novalidate>
         <label for="globalEmailInput">Email address</label>
         <div class="global-email-form-row">
           <input id="globalEmailInput" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="globalEmailPrivacy globalEmailStatus" required>
-          <button type="submit">UNLOCK 10%</button>
+          <button type="submit">JOIN THE LIST</button>
         </div>
         <small id="globalEmailPrivacy">No spam. Unsubscribe any time.</small>
         <p id="globalEmailStatus" class="global-email-status" data-global-email-status aria-live="polite"></p>
@@ -77,7 +77,7 @@
       <span class="global-email-check" aria-hidden="true">✓</span>
       <p class="global-email-eyebrow">THANK YOU</p>
       <h2 id="globalEmailTitle">You're on the CUEBOTS list.</h2>
-      <p>Your welcome offer and player updates are ready. This message will close automatically in 10 seconds.</p>
+      <p>Your player updates are ready. This message will close automatically in 10 seconds.</p>
     </div>`;
   }
 

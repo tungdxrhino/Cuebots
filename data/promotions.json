@@ -1,0 +1,43 @@
+[
+  {
+    "id": "compatibility-help",
+    "title": "Check Compatibility",
+    "subtitle": "Confirm your joint and fit before ordering a butt or shaft.",
+    "type": "support",
+    "targetCollections": [
+      "cue-butts",
+      "shafts"
+    ],
+    "targetProducts": [],
+    "discountPercent": null,
+    "discountAmount": null,
+    "code": null,
+    "startAt": null,
+    "endAt": null,
+    "imageDesktop": "",
+    "imageMobile": "",
+    "ctaLabel": "OPEN COMPATIBILITY GUIDE",
+    "ctaUrl": "pages/compatibility-help.html",
+    "active": true,
+    "sourceUrl": "https://www.cuebots.com/pages/contact"
+  },
+  {
+    "id": "limited-lifetime-warranty",
+    "title": "Limited Lifetime Warranty",
+    "subtitle": "Review coverage and support before choosing your equipment.",
+    "type": "support",
+    "targetCollections": [],
+    "targetProducts": [],
+    "discountPercent": null,
+    "discountAmount": null,
+    "code": null,
+    "startAt": null,
+    "endAt": null,
+    "imageDesktop": "",
+    "imageMobile": "",
+    "ctaLabel": "VIEW WARRANTY",
+    "ctaUrl": "pages/warranty.html",
+    "active": true,
+    "sourceUrl": "https://www.cuebots.com/pages/limited-lifetime-warranty"
+  }
+]

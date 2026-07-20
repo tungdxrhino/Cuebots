@@ -214,7 +214,7 @@
     const cartFooter = $("[data-cart-drawer] .drawer-footer");
     if (cartFooter) cartFooter.innerHTML = `<div class="cart-summary-panel" data-cart-summary></div><button class="btn" type="button" data-checkout>CHECKOUT</button><p>Secure demo checkout. No payment will be processed.</p>`;
     if (cartDrawer && !$("[data-cart-recovery-modal]")) {
-      cartDrawer.insertAdjacentHTML("afterend", `<section class="cart-recovery-modal" role="dialog" aria-modal="true" aria-hidden="true" data-cart-recovery-modal><button class="cart-recovery-close" type="button" aria-label="Close cart reminder" data-cart-recovery-later><svg class="icon"><use href="#i-x"></use></svg></button><div class="cart-recovery-media"><img src="${path("assets/images/promotions/poster-retro-ii-complete-setups-desktop-01.webp")}" width="640" height="420" alt="" loading="lazy" decoding="async"></div><div class="cart-recovery-copy"><p class="eyebrow">PRIVATE CART NOTE</p><h2>Your preferred pricing is still reserved.</h2><p>The public CUEBOTS10 offer has been applied to your setup. Free shipping progress and warranty support remain with your cart while you decide.</p><div class="cart-recovery-offer" data-cart-recovery-offer></div><div class="cart-recovery-actions"><a class="btn" href="${path("pages/checkout.html")}" data-cart-recovery-checkout>CONTINUE SECURE CHECKOUT</a><button class="btn btn-secondary" type="button" data-cart-recovery-later>KEEP IT FOR LATER</button></div></div></section>`);
+      cartDrawer.insertAdjacentHTML("afterend", `<section class="cart-recovery-modal" role="dialog" aria-modal="true" aria-hidden="true" data-cart-recovery-modal><button class="cart-recovery-close" type="button" aria-label="Close cart reminder" data-cart-recovery-later><svg class="icon"><use href="#i-x"></use></svg></button><div class="cart-recovery-media"><img src="${path("assets/images/promotions/poster-retro-ii-complete-setups-desktop-01.webp")}" width="640" height="420" alt="" loading="lazy" decoding="async"></div><div class="cart-recovery-copy"><p class="eyebrow">YOUR SAVED CART</p><h2>Your selected equipment is still here.</h2><p>Review your setup, shipping progress and verified offers whenever you are ready. No discount is applied unless it is present in current promotion data.</p><div class="cart-recovery-offer" data-cart-recovery-offer></div><div class="cart-recovery-actions"><a class="btn" href="${path("pages/checkout.html")}" data-cart-recovery-checkout>CONTINUE SECURE CHECKOUT</a><button class="btn btn-secondary" type="button" data-cart-recovery-later>KEEP IT FOR LATER</button></div></div></section>`);
     }
   }
 
@@ -374,10 +374,10 @@
   }
   const FREE_SHIPPING_THRESHOLD = 99;
   const PUBLIC_CART_PROMO = {
-    code: "CUEBOTS10",
-    rate: 0.1,
-    title: "10% preferred pricing",
-    note: "Automatically applied while the public web offer is active."
+    code: "",
+    rate: 0,
+    title: "Compatibility guidance",
+    note: "No public discount is applied unless verified promotion data is active."
   };
   let suppressCartRecovery = false;
   let pendingRecoveryUrl = "";
@@ -441,7 +441,7 @@
     if (!modal) return;
     const subtotal = cartSubtotal();
     const discount = cartDiscount(subtotal);
-    $("[data-cart-recovery-offer]", modal).innerHTML = `<span>${PUBLIC_CART_PROMO.code}</span><strong>${money(discount)} saved today</strong><small>${money(cartTotal(subtotal))} reserved total</small>`;
+    $("[data-cart-recovery-offer]", modal).innerHTML = `<span>ORDER REVIEW</span><strong>${money(cartTotal(subtotal))} cart total</strong><small>Compatibility and shipping details remain available.</small>`;
     clearTimeout(showCartRecovery.timer);
     showCartRecovery.timer = setTimeout(() => openSurface(modal), delay);
   }

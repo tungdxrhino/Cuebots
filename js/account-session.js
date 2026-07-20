@@ -144,12 +144,9 @@
   ];
 
   const rewardsPanelMarkup = loyalty => {
-    const expiry = new Date();
-    expiry.setDate(expiry.getDate() + 90);
-    const expiryLabel = expiry.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
     const vouchers = loyalty.tierIndex >= 3
-      ? `<div class="account-vouchers"><article><small>CELESTIAL10</small><strong>10% member reward</strong><span>Expires ${expiryLabel}</span></article><article><small>GEAR15</small><strong>15% accessories</strong><span>Expires ${expiryLabel}</span></article><article><small>CELEBRATE20</small><strong>20% celebration reward</strong><span>Expires ${expiryLabel}</span></article></div>`
-      : `<p class="account-reward-note">Reach Celestial VIP to unlock 3 exclusive vouchers with a visible expiry date.</p>`;
+      ? `<div class="account-vouchers"><article><small>MEMBER REWARD</small><strong>Your verified vouchers will appear here</strong><span>Codes and expiry dates are shown only after issue.</span></article></div>`
+      : `<p class="account-reward-note">Reach Celestial VIP to become eligible for three exclusive vouchers. Codes appear only after they are issued.</p>`;
     const annual = loyalty.tierIndex >= 4
       ? `<section class="account-annual-status"><div><small>ANNUAL BESPOKE CUE ELIGIBILITY</small><strong>${formatUSD(loyalty.annualSpend)} / $1,500 this year</strong></div><span class="account-tier-track"><i style="width:${loyalty.annualProgress}%"></i></span><p>Spend $1,500 in each membership year after reaching Dark Voyager Elite to receive one unique custom-designed cue.</p></section>`
       : "";
